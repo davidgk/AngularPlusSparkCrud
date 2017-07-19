@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/partnerbackendtest.iml" filepath="$PROJECT_DIR$/partnerbackendtest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/partner-backend-test.iml" filepath="$PROJECT_DIR$/partner-backend-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../partnerCrudAngular/partnerCrudAngular.iml" filepath="$PROJECT_DIR$/../partnerCrudAngular/partnerCrudAngular.iml" />
     </modules>
   </component>
 </project>

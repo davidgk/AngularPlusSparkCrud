@@ -57,7 +57,8 @@ ng g service /<your folder name>/your service name
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# angular2Example
+
+# PartnerCrudAngular
 
 
 Basado en :

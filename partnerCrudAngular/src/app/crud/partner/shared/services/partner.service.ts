@@ -8,17 +8,13 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class PartnerService {
 
-  private url: string = "http://localhost:4567/partner";
-  
+  private url: string = "http://localhost:8090/partner";
+
 
   constructor(private http: Http) { }
 
   getPartners(){
-    let method = 'GET';  
-    let requestOptions: RequestOptions = new RequestOptions();
-    requestOptions.headers.append("Access-Control-Allow-Origin", "*");
-    requestOptions.method = method;
-    return this.http.request(this.url,requestOptions)
+    return this.http.get(this.url)
       .map(res => res.json());
   }
 
@@ -30,7 +26,7 @@ export class PartnerService {
   private getPartnerUrl(id){
     return this.url + "/" + id;
   }
- 
+
 }
 
 
