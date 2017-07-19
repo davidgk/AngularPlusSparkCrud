@@ -9,3 +9,10 @@ thead {
     vertical-align: middle;
     border-color: inherit;
 }
+
+#centric {
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}

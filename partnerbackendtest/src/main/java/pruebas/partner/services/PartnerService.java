@@ -16,8 +16,8 @@ public class PartnerService {
     }
 
     public List getAllPartners() {
-       Partner partner01 = Partner.create("Carlos", "1" , "1");
-       Partner partner02 = Partner.create("Julian", "2" , "2");
+       Partner partner01 = Partner.create("Carlos", "1" , "enabled",  "1");
+       Partner partner02 = Partner.create("Julian", "2" , "enabled","2");
        return Arrays.asList(partner01, partner02);
 
     }

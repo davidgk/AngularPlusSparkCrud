@@ -1,41 +1,44 @@
-<p>
-  Displaying {{ partners.length }} users.
-</p>
 
-<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-  <a class="btn-floating btn-large waves-effect waves-light green"
-     routerLink="/partner/new">
-    <i class="material-icons">add</i>
-  </a>
-</div>
+<div id="centric">
+  <p>
+    <span><H1>Partners</H1></span>
+  </p>
 
-<table>
-  <thead>
-  <tr>
-    <th data-field="name">Partner Key</th>
-    <th data-field="name">Name</th>
-    <th data-field="name">Edit</th>
-    <th data-field="name">Delete</th>
-  </tr>
-  </thead>
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large waves-effect waves-light green"
+       routerLink="/partner/new">
+      <i class="material-icons">Add Partner</i>
+    </a>
+  </div>
 
-  <tbody>
+  <table>
+    <thead>
+    <tr>
+      <th data-field="partner_id">Partner Id</th>
+      <th data-field="name">Name</th>
+      <th data-field="status">Status</th>
+      <th data-field="name">Manage</th>
+    </tr>
+    </thead>
+
+    <tbody>
     <tr *ngFor="let partner of partners">
-      <td>{{ partner.key }}</td>
-      <td>{{ partner.name }}</td>
+      <td>{{ partner.partner_id }}</td>
       <td>
         <a [routerLink]="['/partner', partner.partner_key]">
-          <i class="material-icons">mode_edit</i>
+          <i class="material-icons">{{ partner.name }}</i>
         </a>
       </td>
+      <td>{{ partner.status }}</td>
       <td>
+        <a [routerLink]="['/partner', partner.partner_key]">
+          <i class="material-icons">Edit</i>
+        </a> |
         <a (click)="deletePartner(partner)" href="">
-          <i class="material-icons">delete</i>
+          <i class="material-icons">Delete</i>
         </a>
       </td>
     </tr>
-  </tbody>
-</table>
-
-
- 
+    </tbody>
+  </table>
+</div>
