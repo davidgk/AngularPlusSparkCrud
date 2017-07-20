@@ -1,6 +1,9 @@
 package pruebas.partner;
 
+import pruebas.partner.model.Partner;
 import pruebas.partner.services.PartnerService;
+import spark.Request;
+import spark.Response;
 
 import static spark.Spark.*;
 import static util.JsonUtil.json;
@@ -10,12 +13,26 @@ import static util.JsonUtil.json;
  */
 public class ParnerServiceMain {
 
-    public static void main( String[] args )
+    private static PartnerService partnerService;
+
+    public static void main(String[] args )
     {
         port(getHerokuAssignedPort());
         enableCORS("*", "*", "*");
-        PartnerService partnerService = PartnerService.create();
-        get("/partner", (req, res) -> partnerService.getAllPartners(), json());
+        partnerService = PartnerService.create();
+        get("/partners", (req, res) -> partnerService.getAllPartners(), json());
+        get("/partners/:id", (req, res) -> getPartnerById(req,res), json());
+    }
+
+    static Partner getPartnerById(Request req, Response res) {
+        String id = req.params(":id");
+        Partner partner = partnerService.getPartner(id);
+        if (partner != null) {
+            return partner;
+        }
+        res.status(400);
+        res.body("Partner not found");
+        return null;
     }
 
     static int getHerokuAssignedPort() {

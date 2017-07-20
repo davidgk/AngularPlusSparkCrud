@@ -23,10 +23,24 @@ export class PartnerService {
       .map(res => res.json());
   }
 
-  private getPartnerUrl(id){
-    return this.url + "/" + id;
+  private getPartnerUrl(key){
+    return this.url + "/" + key;
   }
 
+  getPartner(id){
+    return this.http.get(this.getPartnerUrl(id))
+      .map(res => res.json());
+  }
+
+  addPartner(partner){
+  return this.http.post(this.url, JSON.stringify(partner))
+    .map(res => res.json());
+}
+
+  updateParrner(partner){
+  return this.http.put(this.getPartnerUrl(partner.partner_key), JSON.stringify(partner))
+    .map(res => res.json());
+}
 }
 
 

@@ -8,9 +8,9 @@ import { PartnerService } from "app/crud/partner/shared/services/partner.service
   styleUrls: ['./partner-home.component.css']
 })
 export class PartnerHomeComponent implements OnInit {
-  
+
   partners: Partner[] = [];
-  
+
   constructor(private partnerService: PartnerService) { }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class PartnerHomeComponent implements OnInit {
       this.partnerService.deletePartner(partner.partner_id)
         .subscribe(null,
           err => {
-            alert("Could not delete user.");
+            alert("Could not delete partner.");
             // Revert the view back to its original state
             this.partners.splice(index, 0, partner);
           });
@@ -36,9 +36,9 @@ export class PartnerHomeComponent implements OnInit {
 }
 
 
- 
 
-  
 
-  
+
+
+
 

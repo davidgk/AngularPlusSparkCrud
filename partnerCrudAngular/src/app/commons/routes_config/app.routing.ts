@@ -10,8 +10,9 @@ const appRoutes: Routes = [
   { path: 'home', pathMatch: 'full', component: HomeComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'not-found', component: NotFoundComponent },
-  { path: 'partner', component: PartnerHomeComponent },
-  { path: 'partner/new', component: PartnerFormComponent},
+  { path: 'partners', component: PartnerHomeComponent },
+  { path: 'partners/new', component: PartnerFormComponent},
+  { path: 'partners/:id/edit', component: PartnerFormComponent},
   /*,{ path: 'users/:id', component: UserFormComponent}*/
   { path: '**', redirectTo: 'not-found' }
 ];

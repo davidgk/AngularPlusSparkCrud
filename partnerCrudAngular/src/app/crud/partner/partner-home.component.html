@@ -3,15 +3,16 @@
   <p>
     <span><H1>Partners</H1></span>
   </p>
-
+  <br>
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large waves-effect waves-light green"
-       routerLink="/partner/new">
+    routerLink="/partner/new">
       <i class="material-icons">Add Partner</i>
     </a>
   </div>
+  <br>
 
-  <table>
+  <table class="table table-bordered table-striped">
     <thead>
     <tr>
       <th data-field="partner_id">Partner Id</th>
@@ -25,7 +26,7 @@
     <tr *ngFor="let partner of partners">
       <td>{{ partner.partner_id }}</td>
       <td>
-        <a [routerLink]="['/partner', partner.partner_key]">
+        <a [routerLink]="['/partner/:key/edit', partner.partner_key]">
           <i class="material-icons">{{ partner.name }}</i>
         </a>
       </td>

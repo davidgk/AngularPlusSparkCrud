@@ -60,6 +60,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # PartnerCrudAngular
 
+### Notes about components
+
+* installing scss : https://github.com/AngularClass/angular-starter/wiki/How-to-include-SCSS-in-components
+* install logs: https://www.npmjs.com/package/angular2-logger
 
 Basado en :
 https://desarrolloweb.com/manuales/manual-angularjs.html

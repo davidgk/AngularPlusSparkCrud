@@ -5,10 +5,10 @@ import { NavigatorComponent } from "app/commons/views/navigator/navigator.compon
   selector: 'main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
-  entryComponents:[NavigatorComponent]  
+  entryComponents:[NavigatorComponent]
 })
 export class MainComponent implements OnInit {
-  title = 'Partner by Davidgk';
+  title = 'Partner CRUD by Davidgk';
   constructor() { }
 
   ngOnInit() {
