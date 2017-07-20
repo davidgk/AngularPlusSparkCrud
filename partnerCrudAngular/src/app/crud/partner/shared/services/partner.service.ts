@@ -37,7 +37,7 @@ export class PartnerService {
     .map(res => res.json());
 }
 
-  updateParrner(partner){
+  updatePartner(partner){
   return this.http.put(this.getPartnerUrl(partner.partner_key), JSON.stringify(partner))
     .map(res => res.json());
 }

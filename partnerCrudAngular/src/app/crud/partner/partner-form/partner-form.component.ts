@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from "@angular/core";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 
-import { Partner } from '../shared/model/partner';
-import { PartnerService } from '../shared/services/partner.service';
-import { BasicValidators } from '../shared/validators/basic-validator';
+import {Partner} from "../shared/model/partner";
+import {PartnerService} from "../shared/services/partner.service";
+import {LegalInformationComponent} from "./components/legal-information/legal-information.component";
 
 @Component({
   selector: 'partner-form',
   templateUrl: './partner-form.component.html',
-  styleUrls: ['./partner-form.component.css']
+  styleUrls: ['./partner-form.component.css'],
+  entryComponents:[LegalInformationComponent]
 })
 export class PartnerFormComponent implements OnInit {
+
 
   form: FormGroup;
   title: string;
@@ -36,22 +38,25 @@ export class PartnerFormComponent implements OnInit {
     });
   }
 
+
+
   ngOnInit() {
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
-
-      this.title = id ? 'Edit Partner' : 'New Partner';
 
       if (!id)
         return;
 
       this.partnerService.getPartner(id)
         .subscribe(
-          partner => this.partner = partner,
+          partner => {
+            this.partner = partner;
+            this.title = id ? 'Edit Partner ' + '\"' + this.partner.name + '\"' : 'New Partner';
+          },
           response => {
-            if (response.status == 404) {
-              this.router.navigate(['NotFound']);
-            }
+              if (response.status == 404) {
+                this.router.navigate(['NotFound']);
+              }
           });
     });
   }
@@ -61,7 +66,7 @@ export class PartnerFormComponent implements OnInit {
       partnerValue = this.form.value;
 
     if (partnerValue.id){
-      result = this.partnerService.updateParrner(partnerValue);
+      result = this.partnerService.updatePartner(partnerValue);
     } else {
       result = this.partnerService.addPartner(partnerValue);
     }

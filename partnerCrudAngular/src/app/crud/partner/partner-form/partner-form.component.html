@@ -1,15 +1,7 @@
 <div id="centric">
   <p>
-    <span>{{title}}</span>
+    <span><h1>{{title}}</h1></span>
   </p>
   <br>
-  <div>
-    <div><h2>{{partner.name}}</h2> </div>
-    <div><h2>{{partner.partner_key}}</h2> </div>
-    <div><h2>{{partner.partner_id}}</h2> </div>
-    <div><h2>{{partner.status}}</h2> </div>
-
-
-
-  </div>
+  <legal-information [(partner)]="partner"></legal-information>
 </div>

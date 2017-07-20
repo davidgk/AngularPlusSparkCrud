@@ -6,6 +6,7 @@ import { HttpModule }  from '@angular/http';
 import { PartnerFormComponent } from './partner-form/partner-form.component';
 import { PartnerHomeComponent } from './partner-home.component';
 import { PartnerService } from './shared/services/partner.service';
+import { LegalInformationComponent } from './partner-form/components/legal-information/legal-information.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { PartnerService } from './shared/services/partner.service';
   ],
   declarations: [
     PartnerFormComponent,
-    PartnerHomeComponent
+    PartnerHomeComponent,
+    LegalInformationComponent
   ],
   exports: [
     PartnerHomeComponent
