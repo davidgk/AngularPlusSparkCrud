@@ -6,7 +6,7 @@
   <br>
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large waves-effect waves-light green"
-    routerLink="/partner/new">
+    routerLink="/partners/new">
       <i class="material-icons">Add Partner</i>
     </a>
   </div>
@@ -26,13 +26,13 @@
     <tr *ngFor="let partner of partners">
       <td>{{ partner.partner_id }}</td>
       <td>
-        <a [routerLink]="['/partner/:key/edit', partner.partner_key]">
+        <a [routerLink]="['/partners/:id/edit', partner.partner_key]">
           <i class="material-icons">{{ partner.name }}</i>
         </a>
       </td>
       <td>{{ partner.status }}</td>
       <td>
-        <a [routerLink]="['/partner', partner.partner_key]">
+        <a [routerLink]="['/partners/', partner.partner_key,'edit']">
           <i class="material-icons">Edit</i>
         </a> |
         <a (click)="deletePartner(partner)" href="">

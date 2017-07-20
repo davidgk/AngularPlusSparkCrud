@@ -47,7 +47,7 @@ export class PartnerFormComponent implements OnInit {
 
       this.partnerService.getPartner(id)
         .subscribe(
-          user => this.partner = user,
+          partner => this.partner = partner,
           response => {
             if (response.status == 404) {
               this.router.navigate(['NotFound']);
