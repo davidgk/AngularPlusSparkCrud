@@ -1,4 +1,4 @@
-partnerbackendtest/target
-partnerbackendtest/.idea
-partnerbackendtest/.idea/*
+./partnerbackendtest/target
+./partnerbackendtest/.idea
+./partnerbackendtest/.idea/*
 

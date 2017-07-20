@@ -64,6 +64,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * installing scss : https://github.com/AngularClass/angular-starter/wiki/How-to-include-SCSS-in-components
 * install logs: https://www.npmjs.com/package/angular2-logger
+* debug into intellij: https://blog.jetbrains.com/webstorm/2017/01/debugging-angular-apps/
+Do not forget to add JetBrains IDE Support to Chrome.
 
 Basado en :
 https://desarrolloweb.com/manuales/manual-angularjs.html
