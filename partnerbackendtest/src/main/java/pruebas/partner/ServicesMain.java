@@ -1,6 +1,7 @@
 package pruebas.partner;
 
 import pruebas.partner.model.Partner;
+import pruebas.partner.services.BillingService;
 import pruebas.partner.services.ContractEntityService;
 import pruebas.partner.services.PartnerService;
 import spark.Request;
@@ -18,6 +19,7 @@ public class ServicesMain {
 
     private static PartnerService partnerService;
     private static ContractEntityService contractEntitiesService;
+    private static BillingService billlingEntitiesService;
 
     public static void main(String[] args )
     {
@@ -25,8 +27,13 @@ public class ServicesMain {
         enableCORS("*", "*", "*");
         initServices();
         get("/contractors", (req, res) -> getAllContactEntities(), json());
+        get("/billing/entities", (req, res) -> getBillingEntities(), json());
         get("/partners", (req, res) -> partnerService.getAllPartners(), json());
         get("/partners/:id", (req, res) -> getPartnerById(req,res), json());
+    }
+
+    static List getBillingEntities() {
+        return billlingEntitiesService.getBillingEntities();
     }
 
     static List getAllContactEntities() {
@@ -36,6 +43,7 @@ public class ServicesMain {
     private static void initServices() {
         partnerService = PartnerService.create();
         contractEntitiesService = ContractEntityService.create();
+        billlingEntitiesService = BillingService.create();
     }
 
     static Partner getPartnerById(Request req, Response res) {

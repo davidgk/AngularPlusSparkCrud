@@ -8,9 +8,12 @@ import {ComboBoxModule} from "ng2-combobox";
 import {PartnerFormComponent} from "./partner-form/partner-form.component";
 import {PartnerHomeComponent} from "./partner-home.component";
 import {LegalInformationComponent} from "./partner-form/components/legal-information/legal-information.component";
-import {FieldWithComboComponent} from "./partner-form/components/commons/field-with-combo/field-with-combo.component";
 import {OptionalClientLevelComponent} from "./partner-form/components/legal-information/optional-client-level/optional-client-level.component";
 import {ComboContractEntityComponent} from "./partner-form/components/legal-information/combo-contract-entity/combo-contract-entity.component";
+import { ComboBillingEntityComponent } from './partner-form/components/legal-information/combo-billing-entity/combo-billing-entity.component';
+import { ComboPartnerTypeComponent } from './partner-form/components/legal-information/combo-partner-type/combo-partner-type.component';
+import { ComboBillingStatusComponent } from './partner-form/components/legal-information/combo-billing-status/combo-billing-status.component';
+import { ComboIntegrationStatusComponent } from './partner-form/components/legal-information/combo-integration-status/combo-integration-status.component';
 
 @NgModule({
   imports: [
@@ -25,9 +28,12 @@ import {ComboContractEntityComponent} from "./partner-form/components/legal-info
     PartnerFormComponent,
     PartnerHomeComponent,
     LegalInformationComponent,
-    FieldWithComboComponent,
     OptionalClientLevelComponent,
-    ComboContractEntityComponent
+    ComboContractEntityComponent,
+    ComboBillingEntityComponent,
+    ComboPartnerTypeComponent,
+    ComboBillingStatusComponent,
+    ComboIntegrationStatusComponent
 
   ],
   exports: [

@@ -18,6 +18,8 @@ import {NotFoundComponent} from "app/commons/views/not-found/not-found.component
 import {PartnerModule} from "app/crud/partner/partner.module";
 import {PartnerService} from "./services/partner/partner.service";
 import {ContractEntitiesService} from "./services/contract-entity/contract-entities.service";
+import {BillingService} from "./services/billing/billing.service";
+import {IntegrationService} from "./services/integration/integration.service";
 
 
 @NgModule({
@@ -39,7 +41,7 @@ import {ContractEntitiesService} from "./services/contract-entity/contract-entit
     PartnerModule
 
   ],
-  providers:    [ Logger,   PartnerService , ContractEntitiesService],
+  providers:    [ Logger,   PartnerService , ContractEntitiesService, BillingService, IntegrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

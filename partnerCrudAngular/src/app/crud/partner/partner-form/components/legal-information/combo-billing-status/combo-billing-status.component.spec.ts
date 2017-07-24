@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FieldWithComboComponent } from './field-with-combo.component';
+import { ComboBillingStatusComponent } from './combo-billing-status.component';
 
-describe('FieldWithComboComponent', () => {
-  let component: FieldWithComboComponent;
-  let fixture: ComponentFixture<FieldWithComboComponent>;
+describe('ComboBillingStatusComponent', () => {
+  let component: ComboBillingStatusComponent;
+  let fixture: ComponentFixture<ComboBillingStatusComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FieldWithComboComponent ]
+      declarations: [ ComboBillingStatusComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FieldWithComboComponent);
+    fixture = TestBed.createComponent(ComboBillingStatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

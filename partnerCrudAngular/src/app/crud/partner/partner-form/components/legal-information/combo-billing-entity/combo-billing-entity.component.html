@@ -1,0 +1,10 @@
+<div class="components_situation">
+  <div class="field_form_title">
+    {{title}} <span class="is_required_form" [hidden]="!isRequired">*</span>
+  </div>
+  <select [(ngModel)]="simpleValue"> // value is a string or number
+    <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
+    <option *ngFor="let obj of billingEntities" [value]="obj.value" >{{obj.name}}</option>
+  </select>
+  <div class="some_explanation_form_field">{{someExplanation}}</div>
+</div>
