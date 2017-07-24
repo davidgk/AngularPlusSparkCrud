@@ -65,9 +65,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * installing scss : https://github.com/AngularClass/angular-starter/wiki/How-to-include-SCSS-in-components
 * install logs: https://www.npmjs.com/package/angular2-logger
 * debug into intellij: https://blog.jetbrains.com/webstorm/2017/01/debugging-angular-apps/
-* css Easy way : http://enjoycss.com/
+* css:
+  * http://enjoycss.com/
+  * http://css3buttongenerator.com/
+* Combos : https://www.npmjs.com/package/ng2-combobox
 * Do not forget to add JetBrains IDE Support to Chrome.
-* Download this example about cruds: https://github.com/loiane/angular2-crud-restcd
+* Download this example about cruds: https://github.com/loiane/angular2-crud-rest
 
 
 Basado en :

@@ -1,8 +1,12 @@
-import {Partner} from "../../shared/model/partner";
+import {Partner} from "../../../../model/partner";
 import {Input} from "@angular/core";
 export abstract class CommonFieldFormComponent {
-
   @Input()
-  partner:Partner;
+  public partner:Partner;
 
+  title:string;
+
+  isRequired:boolean;
+
+  someExplanation:string;
 }

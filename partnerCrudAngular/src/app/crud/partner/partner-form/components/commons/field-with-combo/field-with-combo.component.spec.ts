@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FieldWithOptionalComponent } from './field-with-optional.component';
+import { FieldWithComboComponent } from './field-with-combo.component';
 
-describe('FieldWithOptionalComponent', () => {
-  let component: FieldWithOptionalComponent;
-  let fixture: ComponentFixture<FieldWithOptionalComponent>;
+describe('FieldWithComboComponent', () => {
+  let component: FieldWithComboComponent;
+  let fixture: ComponentFixture<FieldWithComboComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FieldWithOptionalComponent ]
+      declarations: [ FieldWithComboComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FieldWithOptionalComponent);
+    fixture = TestBed.createComponent(FieldWithComboComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

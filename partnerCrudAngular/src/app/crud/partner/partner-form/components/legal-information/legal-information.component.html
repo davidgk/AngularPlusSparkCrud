@@ -7,13 +7,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <field-with-optional class="components_situation"
-        [(partner)]="partner"
-        isRequired=true
-        title="Client level"
-        someExplanation="If Yes is selected, Client profiles under this partner will have Legal information box on Edit page."></field-with-optional>
-    </tr>
+    <tr> <optional-client-level [(partner)]="partner"></optional-client-level>    </tr>
+    <tr> <combo-contract-entity [(partner)]="partner"></combo-contract-entity>    </tr>
 
     </tbody>
   </table>

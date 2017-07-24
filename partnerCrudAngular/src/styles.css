@@ -8,6 +8,30 @@
 }
 
 
+.components_situation{
+  border: none;
+  margin: 2%;
+  padding-left: 5px;
+}
+
+.save_button_form{
+  border-radius: 28px;
+  font-family: Georgia;
+  background: #f0f0f0;
+  font-size: 15px;
+  padding: 2px 15px 2px 15px;
+  text-decoration: none;
+}
+
+.save_button_form:hover {
+  background: #838585;
+  text-decoration: none;
+}
+
+.buttons_form{
+  padding-top: 20px;
+}
+
 .tables_showing_form{
   border: 2px solid #D3D3D3;
   padding: 20px;
@@ -25,8 +49,7 @@
 .thead_tables_showing_form {
   padding-left: 5%;
   background: #D3D3D3;
-  padding-bottom: 5%;
-  padding-bottom: 5%;
+  padding-bottom: 1%;
   font-size: small;
   color: white;
 }
@@ -35,16 +58,11 @@
 .tbody_tables_showing_form{
   padding-left: 5%;
   padding-bottom: 5%;
-  padding-bottom: 5%;
   font-size: x-small;
   color: black;
 }
 
 .field_form_title{
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  margin: 2px;
   padding: 2px;
   border: none;
   font: normal normal bold 13px/1 "Times New Roman", Times, serif;
@@ -65,11 +83,7 @@
 }
 
 .some_explanation_form_field{
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
   margin: 2px;
-  padding: 2px;
   border: none;
   font: normal normal 12px/1 "Times New Roman", Times, serif;
   color: black;
@@ -78,9 +92,6 @@
 }
 
 .option_button_form{
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  margin: 2px;
   padding: 5px;
   border: none;
   font: normal normal 15px/1 "Times New Roman", Times, serif;
@@ -89,8 +100,7 @@
   text-overflow: ellipsis;
 }
 
-.components_situation{
-  margin: 2px;
-  padding-left: 10%;
-  border: none;
+.combo_form{
+
 }
+

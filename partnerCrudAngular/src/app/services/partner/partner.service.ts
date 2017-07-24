@@ -38,9 +38,9 @@ export class PartnerService {
 }
 
   updatePartner(partner){
-  return this.http.put(this.getPartnerUrl(partner.partner_key), JSON.stringify(partner))
-    .map(res => res.json());
-}
+    return this.http.put(this.getPartnerUrl(partner.partner_key), JSON.stringify(partner))
+      .map(res => res.json());
+  }
 }
 
 

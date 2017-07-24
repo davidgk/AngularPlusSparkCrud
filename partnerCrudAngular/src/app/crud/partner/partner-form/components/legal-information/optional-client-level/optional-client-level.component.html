@@ -1,8 +1,8 @@
-<div>
+<div class="components_situation">
   <div class="field_form_title">
-    {{title}} <span class="is_required_form" hidden={{isRequired}}>*</span>
+    {{title}} <span class="is_required_form" [hidden]="!isRequired">*</span>
   </div>
-  <div class="option_button_form">
+  <div class="combo_form" >
     <input type="radio" name="clientLevel" value="male"> No
     <input type="radio" name="clientLevel" value="female"> Yes<br>
   </div>

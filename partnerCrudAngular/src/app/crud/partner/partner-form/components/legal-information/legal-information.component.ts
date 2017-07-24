@@ -1,13 +1,14 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {Partner} from "../../../shared/model/partner";
-import {FieldWithOptionalComponent} from "../commons/field-with-optional/field-with-optional.component";
+import {Partner} from "../../../../../model/partner";
+import {OptionalClientLevelComponent} from "./optional-client-level/optional-client-level.component";
+import {ComboContractEntityComponent} from "./combo-contract-entity/combo-contract-entity.component";
 
 
 @Component({
   selector: 'legal-information',
   templateUrl: './legal-information.component.html',
   styleUrls: ['./legal-information.component.css'],
-  entryComponents: [FieldWithOptionalComponent]
+  entryComponents: [ OptionalClientLevelComponent, ComboContractEntityComponent]
 
 })
 export class LegalInformationComponent implements OnInit {

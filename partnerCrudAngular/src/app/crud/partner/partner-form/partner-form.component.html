@@ -1,5 +1,19 @@
 <div id="centric">
   <h2>{{title}}</h2>
   <br>
-  <legal-information [(partner)]="partner"></legal-information>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <legal-information [(partner)]="partner"></legal-information>
+
+    <div class="buttons_form">
+      <button class="save_button_form" type="submit" [disabled]="!form.valid">
+        Add
+      </button>
+
+      <a class="btn-floating btn-large waves-effect waves-light green"
+         routerLink="/partners">
+        <i class="material-icons">Cancel</i>
+      </a>
+    </div>
+  </form>
+
 </div>

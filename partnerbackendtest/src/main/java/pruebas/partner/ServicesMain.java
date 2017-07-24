@@ -1,9 +1,12 @@
 package pruebas.partner;
 
 import pruebas.partner.model.Partner;
+import pruebas.partner.services.ContractEntityService;
 import pruebas.partner.services.PartnerService;
 import spark.Request;
 import spark.Response;
+
+import java.util.List;
 
 import static spark.Spark.*;
 import static util.JsonUtil.json;
@@ -11,17 +14,28 @@ import static util.JsonUtil.json;
 /**
  * @author david.kotlirevsky
  */
-public class ParnerServiceMain {
+public class ServicesMain {
 
     private static PartnerService partnerService;
+    private static ContractEntityService contractEntitiesService;
 
     public static void main(String[] args )
     {
         port(getHerokuAssignedPort());
         enableCORS("*", "*", "*");
-        partnerService = PartnerService.create();
+        initServices();
+        get("/contractors", (req, res) -> getAllContactEntities(), json());
         get("/partners", (req, res) -> partnerService.getAllPartners(), json());
         get("/partners/:id", (req, res) -> getPartnerById(req,res), json());
+    }
+
+    static List getAllContactEntities() {
+        return contractEntitiesService.getAllContactEntities();
+    }
+
+    private static void initServices() {
+        partnerService = PartnerService.create();
+        contractEntitiesService = ContractEntityService.create();
     }
 
     static Partner getPartnerById(Request req, Response res) {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Partner} from "app/crud/partner/shared/model/partner";
-import {PartnerService} from "app/crud/partner/shared/services/partner.service";
+import {Partner} from "app/model/partner";
+import {PartnerService} from "app/services/partner/partner.service";
 
 @Component({
   selector: 'partner-home',

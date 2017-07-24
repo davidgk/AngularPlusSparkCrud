@@ -16,6 +16,8 @@ import {environment} from "../environments/environment";
 import {routing} from "app/commons/routes_config/app.routing";
 import {NotFoundComponent} from "app/commons/views/not-found/not-found.component";
 import {PartnerModule} from "app/crud/partner/partner.module";
+import {PartnerService} from "./services/partner/partner.service";
+import {ContractEntitiesService} from "./services/contract-entity/contract-entities.service";
 
 
 @NgModule({
@@ -37,7 +39,7 @@ import {PartnerModule} from "app/crud/partner/partner.module";
     PartnerModule
 
   ],
-  providers:    [ Logger ],
+  providers:    [ Logger,   PartnerService , ContractEntitiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -49,3 +51,4 @@ export class AppModule {
 
 
 }
+
