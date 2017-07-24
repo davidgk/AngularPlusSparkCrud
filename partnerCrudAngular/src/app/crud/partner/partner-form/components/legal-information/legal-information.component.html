@@ -1,8 +1,23 @@
 <div>
-  <div><h3>{{title}}</h3></div>
-  <div><h2>{{partner.name}}</h2> </div>
-  <div><h2>{{partner.partner_key}}</h2> </div>
-  <div><h2>{{partner.partner_id}}</h2> </div>
-  <div><h2>{{partner.status}}</h2> </div>
+  <table class="tables_showing_form">
+    <thead class="thead_tables_showing_form">
+    <tr>
+      <th>
+        <div class="innerTableTitle">{{title}}</div></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <field-with-optional class="components_situation"
+        [(partner)]="partner"
+        isRequired=true
+        title="Client level"
+        someExplanation="If Yes is selected, Client profiles under this partner will have Legal information box on Edit page."></field-with-optional>
+    </tr>
+
+    </tbody>
+  </table>
+
+
 </div>
 

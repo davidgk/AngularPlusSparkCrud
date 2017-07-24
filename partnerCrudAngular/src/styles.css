@@ -6,3 +6,91 @@
   padding-top: 5%;
   padding-bottom: 5%;
 }
+
+
+.tables_showing_form{
+  border: 2px solid #D3D3D3;
+  padding: 20px;
+  width: 100%;
+  height: 150px;
+
+}
+
+.innerTableTitle{
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 1%;
+}
+
+.thead_tables_showing_form {
+  padding-left: 5%;
+  background: #D3D3D3;
+  padding-bottom: 5%;
+  padding-bottom: 5%;
+  font-size: small;
+  color: white;
+}
+
+
+.tbody_tables_showing_form{
+  padding-left: 5%;
+  padding-bottom: 5%;
+  padding-bottom: 5%;
+  font-size: x-small;
+  color: black;
+}
+
+.field_form_title{
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 2px;
+  padding: 2px;
+  border: none;
+  font: normal normal bold 13px/1 "Times New Roman", Times, serif;
+  color: black;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+
+
+.is_required_form{
+  font: normal normal bold 13px/1 "Times New Roman", Times, serif;
+  color: red;
+}
+
+.optional_form_comp{
+  font-size: xx-small;
+}
+
+.some_explanation_form_field{
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 2px;
+  padding: 2px;
+  border: none;
+  font: normal normal 12px/1 "Times New Roman", Times, serif;
+  color: black;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.option_button_form{
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  margin: 2px;
+  padding: 5px;
+  border: none;
+  font: normal normal 15px/1 "Times New Roman", Times, serif;
+  color: black;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+.components_situation{
+  margin: 2px;
+  padding-left: 10%;
+  border: none;
+}

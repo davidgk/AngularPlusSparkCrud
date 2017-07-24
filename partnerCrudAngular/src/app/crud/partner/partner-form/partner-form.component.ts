@@ -5,12 +5,14 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Partner} from "../shared/model/partner";
 import {PartnerService} from "../shared/services/partner.service";
 import {LegalInformationComponent} from "./components/legal-information/legal-information.component";
+import {FieldWithOptionalComponent} from "./components/commons/field-with-optional/field-with-optional.component";
+
 
 @Component({
   selector: 'partner-form',
   templateUrl: './partner-form.component.html',
   styleUrls: ['./partner-form.component.css'],
-  entryComponents:[LegalInformationComponent]
+  entryComponents:[LegalInformationComponent, FieldWithOptionalComponent]
 })
 export class PartnerFormComponent implements OnInit {
 

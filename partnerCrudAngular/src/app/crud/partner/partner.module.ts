@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule }  from '@angular/router';
-import { HttpModule }  from '@angular/http';
-import { PartnerFormComponent } from './partner-form/partner-form.component';
-import { PartnerHomeComponent } from './partner-home.component';
-import { PartnerService } from './shared/services/partner.service';
-import { LegalInformationComponent } from './partner-form/components/legal-information/legal-information.component';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
+import {HttpModule} from "@angular/http";
+import {PartnerFormComponent} from "./partner-form/partner-form.component";
+import {PartnerHomeComponent} from "./partner-home.component";
+import {PartnerService} from "./shared/services/partner.service";
+import {LegalInformationComponent} from "./partner-form/components/legal-information/legal-information.component";
+import {FieldWithOptionalComponent} from "./partner-form/components/commons/field-with-optional/field-with-optional.component";
 
 @NgModule({
   imports: [
@@ -14,15 +15,18 @@ import { LegalInformationComponent } from './partner-form/components/legal-infor
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpModule
+    HttpModule,
   ],
   declarations: [
     PartnerFormComponent,
     PartnerHomeComponent,
-    LegalInformationComponent
+    LegalInformationComponent,
+    FieldWithOptionalComponent
+
   ],
   exports: [
-    PartnerHomeComponent
+    PartnerHomeComponent,
+    FieldWithOptionalComponent
   ],
   providers: [
     PartnerService
