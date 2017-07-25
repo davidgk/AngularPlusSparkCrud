@@ -1,8 +1,8 @@
 
 <div id="centric">
-  <p>
-    <span><H1>Partners</H1></span>
-  </p>
+  <div class="main_title">
+    Partners
+  </div>
   <br>
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large waves-effect waves-light green"
@@ -25,7 +25,7 @@
     <tr *ngFor="let partner of partners">
       <td>{{ partner.partner_id }}</td>
       <td>
-        <a [routerLink]="['/partners/:id/edit', partner.partner_key]">
+        <a [routerLink]="['/partners/', partner.partner_key,'edit']">
           <i class="material-icons">{{ partner.name }}</i>
         </a>
       </td>

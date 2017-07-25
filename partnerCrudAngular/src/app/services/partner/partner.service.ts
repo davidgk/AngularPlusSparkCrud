@@ -42,7 +42,7 @@ export class PartnerService {
       .map(res => res.json());
   }
 
-  getpartnersTypes(){
+  getPartnersTypes(){
     return this.http.get(this.url+"/types")
       .map(res => res.json());
   }

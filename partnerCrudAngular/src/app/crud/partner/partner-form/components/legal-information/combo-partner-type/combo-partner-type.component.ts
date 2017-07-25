@@ -14,12 +14,12 @@ export class ComboPartnerTypeComponent extends CommonFieldFormComponent implemen
   constructor(private partnerService: PartnerService) {
     super();
     this.isRequired=true;
-    this.title="Contract Entity";
-    this.someExplanation="Identifies which Verifi legal entity the partner contract is signed under";
+    this.title="Partner Type";
+    this.someExplanation="Identifies this partners relationship with Verifi.";
   }
 
   ngOnInit() {
-    this.partnerService.getpartnersTypes()
+    this.partnerService.getPartnersTypes()
       .subscribe(data => this.partnerTypes = data);
   }
 

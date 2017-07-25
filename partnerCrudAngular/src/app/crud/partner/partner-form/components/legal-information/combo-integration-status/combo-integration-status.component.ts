@@ -9,18 +9,18 @@ import {IntegrationService} from "../../../../../../services/integration/integra
 })
 export class ComboIntegrationStatusComponent extends CommonFieldFormComponent implements OnInit {
   private selectUndefinedOptionValue:any;
-  integrationStatus:IntegrationStatus[] = [];
+  integrationTypes:IntegrationStatus[] = [];
 
   constructor(private integrationService: IntegrationService) {
     super();
     this.isRequired=true;
-    this.title="Contract Entity";
-    this.someExplanation="Identifies which Verifi legal entity the partner contract is signed under";
+    this.title="Integration Type";
+    this.someExplanation="Identifies how partner will resolve cases";
   }
 
   ngOnInit() {
-    this.integrationService.getintegrationStatus()
-      .subscribe(data => this.integrationStatus = data);
+    this.integrationService.getIntegrationStatus()
+      .subscribe(data => this.integrationTypes = data);
   }
 
 }

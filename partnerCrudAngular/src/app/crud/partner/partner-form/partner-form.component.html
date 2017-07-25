@@ -1,5 +1,7 @@
 <div id="centric">
-  <h2>{{title}}</h2>
+  <div class="main_title">
+    {{title}}
+  </div>
   <br>
   <form [formGroup]="form" (ngSubmit)="save()">
     <legal-information [(partner)]="partner"></legal-information>

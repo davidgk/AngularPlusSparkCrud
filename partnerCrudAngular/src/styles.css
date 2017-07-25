@@ -7,6 +7,10 @@
   padding-bottom: 5%;
 }
 
+.main_title{
+  font: normal normal bold 35px/1 "Times New Roman", Times, serif;
+  width: 100%;
+}
 
 .components_situation{
   border: none;
@@ -63,7 +67,7 @@
 }
 
 .field_form_title{
-  padding: 2px;
+  padding-bottom: 5px;
   border: none;
   font: normal normal bold 13px/1 "Times New Roman", Times, serif;
   color: black;
@@ -83,7 +87,7 @@
 }
 
 .some_explanation_form_field{
-  margin: 2px;
+  padding-top: 4px;
   border: none;
   font: normal normal 12px/1 "Times New Roman", Times, serif;
   color: black;

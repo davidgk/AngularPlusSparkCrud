@@ -11,7 +11,7 @@ export class IntegrationService {
 
   constructor(private http: Http) { }
 
-  getintegrationStatus(){
+  getIntegrationStatus(){
     return this.http.get(this.url+"/status")
       .map(res => res.json());
   }

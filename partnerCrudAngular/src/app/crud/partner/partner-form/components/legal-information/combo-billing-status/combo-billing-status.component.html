@@ -4,7 +4,7 @@
   </div>
   <select [(ngModel)]="simpleValue"> // value is a string or number
     <option disabled hidden [value]="selectUndefinedOptionValue">-- select --</option>
-    <option *ngFor="let obj of billingStatus" [value]="obj.value" >{{obj.name}}</option>
+    <option *ngFor="let obj of billingStatus" [value]="obj" >{{obj}}</option>
   </select>
   <div class="some_explanation_form_field">{{someExplanation}}</div>
 </div>
