@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Partner} from "../../../model/partner";
 import {PartnerService} from "../../../services/partner/partner.service";
 import {LegalInformationComponent} from "./components/legal-information/legal-information.component";
+import {PartnerConfiguration} from "../../../model/partner_configuration";
 
 
 
@@ -20,6 +21,7 @@ export class PartnerFormComponent implements OnInit {
   form: FormGroup;
   title: string;
   partner: Partner = new Partner();
+  partnerConfiguration: PartnerConfiguration = new PartnerConfiguration();
 
   constructor(
     formBuilder: FormBuilder,
@@ -49,17 +51,8 @@ export class PartnerFormComponent implements OnInit {
       if (!id)
         return;
 
-      this.partnerService.getPartner(id)
-        .subscribe(
-          partner => {
-            this.partner = partner;
-            this.title = id ? 'Edit Partner ' + '\"' + this.partner.name + '\"' : 'New Partner';
-          },
-          response => {
-              if (response.status == 404) {
-                this.router.navigate(['NotFound']);
-              }
-          });
+      this.obtainPartnerFromId(id);
+
     });
   }
 
@@ -76,4 +69,33 @@ export class PartnerFormComponent implements OnInit {
     result.subscribe(data => this.router.navigate(['users']));
   }
 
+  private obtainPartnerFromId(id: number) {
+    this.partnerService.getPartner(id)
+      .subscribe(
+        partner => {
+          this.partner = partner;
+          this.title = id ? 'Edit Partner ' + '\"' + this.partner.name + '\"' : 'New Partner';
+          this.obtainPartnerConfigurationFromId(partner.partner_key);
+        },
+        response => {
+          if (response.status == 404) {
+            this.router.navigate(['NotFound']);
+          }
+        });
+
+  }
+
+  private obtainPartnerConfigurationFromId(key: number) {
+    this.partnerService.getPartnerConfiguration(key)
+      .subscribe(
+        partnerConfiguration => {
+          this.partnerConfiguration = partnerConfiguration;
+        },
+        response => {
+          if (response.status == 404) {
+            console.log("Fail Obtaining partnerConfiguration "+ response.message)
+            this.router.navigate(['NotFound']);
+          }
+        });
+  }
 }

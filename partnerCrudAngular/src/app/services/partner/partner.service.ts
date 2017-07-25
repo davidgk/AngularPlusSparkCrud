@@ -46,6 +46,11 @@ export class PartnerService {
     return this.http.get(this.url+"/types")
       .map(res => res.json());
   }
+
+  getPartnerConfiguration(key: number) {
+    return this.http.get(this.url+"/configuration/"+key)
+      .map(res => res.json());
+  }
 }
 
 

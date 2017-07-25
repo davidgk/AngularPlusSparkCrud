@@ -1,7 +1,7 @@
 export class PartnerConfiguration{
   partnerConfigurationKey:number;
   partnerKey:number;
-  version:number;
+  /*version:number;
   notificationUrl:string;
   requireAcquirerReferenceNumber:number;
   maxAttempts:number;
@@ -32,6 +32,6 @@ export class PartnerConfiguration{
   contractEntityKey:number;
   partnerStatusKey:number;
   partnerTypeKey:number;
-  billingPartnerId:string;
+  billingPartnerId:string;*/
   isClientLevelContractEntity:boolean;
 }

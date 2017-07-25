@@ -15,6 +15,7 @@ import { ComboPartnerTypeComponent } from './partner-form/components/legal-infor
 import { ComboBillingStatusComponent } from './partner-form/components/legal-information/combo-billing-status/combo-billing-status.component';
 import { ComboIntegrationStatusComponent } from './partner-form/components/legal-information/combo-integration-status/combo-integration-status.component';
 
+
 @NgModule({
   imports: [
     CommonModule,

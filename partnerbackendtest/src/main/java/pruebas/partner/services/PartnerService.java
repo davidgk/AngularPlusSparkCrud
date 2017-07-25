@@ -1,6 +1,7 @@
 package pruebas.partner.services;
 
 import pruebas.partner.model.Partner;
+import pruebas.partner.model.PartnerConfiguration;
 import pruebas.partner.model.PartnerType;
 import util.OthersUtils;
 
@@ -15,6 +16,7 @@ public class PartnerService {
 
     private static Map<String, Partner> partners;
     private static Map<String, PartnerType> partnerTypes;
+    private static Map<String, PartnerConfiguration> partnerConfiguration;
 
     static{
         partners = new HashMap<>();
@@ -23,7 +25,11 @@ public class PartnerService {
         partnerTypes = new HashMap<>();
         partnerTypes.put("1",PartnerType.create("OneType", "1") );
         partnerTypes.put("2",PartnerType.create("TwoType", "2") );
+        partnerConfiguration= new HashMap<>();
+        partnerConfiguration.put("1",createPartnerSimpleConfiguration("1"));
+        partnerConfiguration.put("2",createPartnerConfiguration("2"));
     }
+
     public static PartnerService create() {
         PartnerService partnerService = new PartnerService();
         return partnerService;
@@ -33,8 +39,6 @@ public class PartnerService {
         return OthersUtils.getListFromMap(partners);
     }
 
-
-
     public Partner getPartner(String id) {
         Partner partner = partners.get(id);
         return partner;
@@ -43,5 +47,24 @@ public class PartnerService {
 
     public List getPartnersTypes() {
         return OthersUtils.getListFromMap(partnerTypes);
+    }
+
+    public PartnerConfiguration getPartnerConfigurationById( String key) {
+       return this.partnerConfiguration.get(key);
+    }
+
+    private static PartnerConfiguration createPartnerSimpleConfiguration(String key) {
+        return PartnerConfiguration.createSimple(new Long(key), new Long(key), true);
+    }
+
+    private static PartnerConfiguration createPartnerConfiguration(String key) {
+        PartnerConfiguration partnerConfiguration = PartnerConfiguration.create(new Long(key),
+            new Long("1"),"1", "some url notif",  true, 100,
+            "1",1,"true", "websiteUrl","address1"
+            ,"address2","city","state","zipcode","country","contactFirstName",
+            "contactLastName","1234561231312","asd@asd.com.ar","supportUrl",
+            "1111111111","supportEmail@as.com",true, "cascadeDisableDescriptors","clientAutoClosed"
+            ,true, true, 1, 1, 1, 1, true);
+        return partnerConfiguration;
     }
 }

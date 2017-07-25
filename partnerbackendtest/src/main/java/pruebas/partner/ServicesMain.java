@@ -33,6 +33,7 @@ public class ServicesMain {
         get("/billing/status", (req, res) -> getBillingStatus(), json());
         get("/partners", (req, res) -> partnerService.getAllPartners(), json());
         get("/partners/types", (req, res) -> partnerService.getPartnersTypes(), json());
+        get("/partners/configuration/:key", (req, res) -> partnerService.getPartnerConfigurationById(req.params("key")), json());
         get("/integrations/status", (req, res) -> integrationService.getAllintegrationStatus(), json());
         get("/partners/:id", (req, res) -> getPartnerById(req,res), json());
     }

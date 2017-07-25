@@ -3,8 +3,8 @@
     {{title}} <span class="is_required_form" [hidden]="!isRequired">*</span>
   </div>
   <div class="combo_form" >
-    <input type="radio" name="clientLevel" value="male"> No
-    <input type="radio" name="clientLevel" value="female"> Yes<br>
+    <input type="radio" formControlName="isClientLevelContractEntity" name="isClientLevelContractEntity" [ngModel]=partnerConfiguration.isClientLevelContractEntity> No
+    <input type="radio" formControlName="isClientLevelContractEntity" name="isClientLevelContractEntity" [ngModel]=partnerConfiguration.isClientLevelContractEntity> Yes
   </div>
   <div class="some_explanation_form_field">{{someExplanation}}</div>
 </div>

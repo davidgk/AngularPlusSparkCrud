@@ -3,8 +3,9 @@
     {{title}}
   </div>
   <br>
-  <form [formGroup]="form" (ngSubmit)="save()">
-    <legal-information [(partner)]="partner"></legal-information>
+  <form [formGroup]="partnerForm" (ngSubmit)="save()">
+    <legal-information
+      [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration" ></legal-information>
 
     <div class="buttons_form">
       <button class="save_button_form" type="submit" [disabled]="!form.valid">

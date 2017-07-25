@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {CommonFieldFormComponent} from "../../common-field-form-component";
+import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'optional-client-level',
   templateUrl: './optional-client-level.component.html'
 })
 export class OptionalClientLevelComponent  extends CommonFieldFormComponent implements OnInit {
+
+  @Input()
+  public formGroup: FormGroup;
 
   constructor() {
     super();
@@ -15,6 +19,7 @@ export class OptionalClientLevelComponent  extends CommonFieldFormComponent impl
   }
 
   ngOnInit() {
+    console.log(this.partnerConfiguration.isClientLevelContractEntity)
   }
 
 }
