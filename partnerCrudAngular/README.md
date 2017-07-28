@@ -60,7 +60,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # PartnerCrudAngular
 
-### Notes about components
+### Several FAQs/ HowTo / Fixes 
 
 * installing scss : https://github.com/AngularClass/angular-starter/wiki/How-to-include-SCSS-in-components
 * install logs: https://www.npmjs.com/package/angular2-logger
@@ -70,6 +70,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   * http://css3buttongenerator.com/
 * Combos : https://www.npmjs.com/package/ng2-combobox
 * Do not forget to add JetBrains IDE Support to Chrome.
+* About forms Reactive error: https://stackoverflow.com/questions/39152071/cant-bind-to-formgroup-since-it-isnt-a-known-property-of-form
+* About forms : https://medium.com/spektrakel-blog/angular2-building-nested-reactive-forms-7978ecd145e4
 * Download this example about cruds: https://github.com/loiane/angular2-crud-rest
 
 

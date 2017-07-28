@@ -1,6 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, JsonpModule} from "@angular/http";
 
 import {AppComponent} from "./app.component";
@@ -20,6 +20,8 @@ import {PartnerService} from "./services/partner/partner.service";
 import {ContractEntitiesService} from "./services/contract-entity/contract-entities.service";
 import {BillingService} from "./services/billing/billing.service";
 import {IntegrationService} from "./services/integration/integration.service";
+import { PersonaFormSimpleComponent } from './crud/persona/persona-form-simple/persona-form-simple.component';
+import { PersonaFormReactiveComponent } from './crud/persona/persona-form-reactive/persona-form-reactive.component';
 
 
 
@@ -31,7 +33,10 @@ import {IntegrationService} from "./services/integration/integration.service";
     MainContainerComponent,
     RouterOutletComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PersonaFormSimpleComponent,
+    PersonaFormReactiveComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ import {IntegrationService} from "./services/integration/integration.service";
     HttpModule,
     JsonpModule,
     routing,
-    PartnerModule
+    PartnerModule,
+    ReactiveFormsModule
 
   ],
   providers:    [ Logger,   PartnerService , ContractEntitiesService, BillingService, IntegrationService],

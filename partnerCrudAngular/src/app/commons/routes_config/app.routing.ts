@@ -4,6 +4,8 @@ import { NotFoundComponent } from '../../commons/views/not-found/not-found.compo
 import { ModuleWithProviders } from "@angular/core/core";
 import { PartnerHomeComponent } from "app/crud/partner/partner-home.component";
 import { PartnerFormComponent } from "app/crud/partner/partner-form/partner-form.component";
+import {PersonaFormSimpleComponent} from "../../crud/persona/persona-form-simple/persona-form-simple.component";
+import {PersonaFormReactiveComponent} from "../../crud/persona/persona-form-reactive/persona-form-reactive.component";
 
 
 const appRoutes: Routes = [
@@ -11,7 +13,9 @@ const appRoutes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'partners', component: PartnerHomeComponent },
-  { path: 'partners/new', component: PartnerFormComponent},
+  { path: 'persona/simple/new', component: PersonaFormSimpleComponent},
+  { path: 'persona/reactive/new', component: PersonaFormReactiveComponent},
+  { path: 'partners/:id/edit', component: PartnerFormComponent},
   { path: 'partners/:id/edit', component: PartnerFormComponent},
   /*,{ path: 'users/:id', component: UserFormComponent}*/
   { path: '**', redirectTo: 'not-found' }
