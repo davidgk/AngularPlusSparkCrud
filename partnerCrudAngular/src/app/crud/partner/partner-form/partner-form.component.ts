@@ -24,6 +24,7 @@ export class PartnerFormComponent implements OnInit {
   partnerConfiguration: PartnerConfiguration = new PartnerConfiguration();
 
   constructor(
+
     private router: Router,
     private route: ActivatedRoute,
     private partnerService: PartnerService
@@ -32,6 +33,10 @@ export class PartnerFormComponent implements OnInit {
 
 
   ngOnInit() {
+    this.partnerForm =  new FormGroup({
+      billingEntity: new FormControl()
+    });
+
     var id = this.route.params.subscribe(params => {
       var id = params['id'];
 
