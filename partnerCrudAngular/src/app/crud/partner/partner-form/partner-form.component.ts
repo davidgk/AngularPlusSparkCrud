@@ -1,25 +1,32 @@
+///<reference path="components/legal-information/optional-client-level/optional-client-level.component.ts"/>
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormControl,FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {Partner} from "../../../model/partner";
 import {PartnerService} from "../../../services/partner/partner.service";
-import {LegalInformationComponent} from "./components/legal-information/legal-information.component";
 import {PartnerConfiguration} from "../../../model/partner_configuration";
-
+import {OptionalClientLevelComponent} from "./components/legal-information/optional-client-level/optional-client-level.component";
+import {ComboContractEntityComponent} from "./components/legal-information/combo-contract-entity/combo-contract-entity.component";
+import {ComboPartnerTypeComponent} from "./components/legal-information/combo-partner-type/combo-partner-type.component";
+import {ComboBillingEntityComponent} from "./components/legal-information/combo-billing-entity/combo-billing-entity.component";
+import {ComboBillingStatusComponent} from "./components/legal-information/combo-billing-status/combo-billing-status.component";
+import {ComboIntegrationStatusComponent} from "./components/legal-information/combo-integration-status/combo-integration-status.component";
 
 
 @Component({
   selector: 'partner-form',
   templateUrl: './partner-form.component.html',
   styleUrls: ['./partner-form.component.css'],
-  entryComponents:[LegalInformationComponent]
+  entryComponents:[OptionalClientLevelComponent, ComboContractEntityComponent
+    , ComboPartnerTypeComponent, ComboBillingEntityComponent , ComboBillingStatusComponent , ComboIntegrationStatusComponent  ]
 })
 export class PartnerFormComponent implements OnInit {
 
 
   private partnerForm: FormGroup;
   title: string;
+  titleLegalInformation:string
   partner: Partner = new Partner();
   partnerConfiguration: PartnerConfiguration = new PartnerConfiguration();
 
@@ -28,7 +35,9 @@ export class PartnerFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private partnerService: PartnerService
-  ) {  }
+  ) {
+    this.titleLegalInformation ="Legal Information"
+  }
 
 
 
