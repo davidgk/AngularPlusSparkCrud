@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonFieldFormComponent} from "../../common-field-form-component";
+import {CommonPartnerFormComponent} from "../../common-partner-form-component";
 import {ContractEntity} from "../../../../../../model/contract_entity";
 import {ContractEntitiesService} from "../../../../../../services/contract-entity/contract-entities.service";
 
@@ -7,7 +7,7 @@ import {ContractEntitiesService} from "../../../../../../services/contract-entit
   selector: 'combo-contract-entity',
   templateUrl: './combo-contract-entity.component.html'
 })
-export class ComboContractEntityComponent extends CommonFieldFormComponent implements OnInit {
+export class ComboContractEntityComponent extends CommonPartnerFormComponent implements OnInit {
   private selectUndefinedOptionValue:any;
   contractEntities:ContractEntity[] = [];
 

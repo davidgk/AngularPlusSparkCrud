@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {CommonFieldFormComponent} from "../../common-field-form-component";
+import {CommonPartnerFormComponent} from "../../common-partner-form-component";
 import {PartnerService} from "../../../../../../services/partner/partner.service";
 import {PartnerType} from "../../../../../../model/partner-type";
 
@@ -7,7 +7,7 @@ import {PartnerType} from "../../../../../../model/partner-type";
   selector: 'combo-partner-type',
   templateUrl: './combo-partner-type.component.html'
 })
-export class ComboPartnerTypeComponent extends CommonFieldFormComponent implements OnInit {
+export class ComboPartnerTypeComponent extends CommonPartnerFormComponent implements OnInit {
   private selectUndefinedOptionValue:any;
   partnerTypes:PartnerType[] = [];
 

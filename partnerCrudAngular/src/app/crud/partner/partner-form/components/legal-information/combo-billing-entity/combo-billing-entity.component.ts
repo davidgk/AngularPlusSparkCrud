@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {CommonFieldFormComponent} from "../../common-field-form-component";
+import {CommonPartnerFormComponent} from "../../common-partner-form-component";
 import {BillingService} from "../../../../../../services/billing/billing.service";
 import {BillingEntitity} from "../../../../../../model/billing_entity";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   selector: 'combo-billing-entity',
   templateUrl: './combo-billing-entity.component.html'
 })
-export class ComboBillingEntityComponent extends CommonFieldFormComponent implements OnInit {
+export class ComboBillingEntityComponent extends CommonPartnerFormComponent implements OnInit {
   private selectUndefinedOptionValue:any;
   billingEntities:BillingEntitity[] = [];
 

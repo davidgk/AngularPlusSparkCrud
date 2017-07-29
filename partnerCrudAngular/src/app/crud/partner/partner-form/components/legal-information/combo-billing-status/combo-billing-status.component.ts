@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonFieldFormComponent} from "../../common-field-form-component";
+import {CommonPartnerFormComponent} from "../../common-partner-form-component";
 import {BillingStatus} from "../../../../../../model/billing_status";
 import {BillingService} from "../../../../../../services/billing/billing.service";
 
@@ -8,7 +8,7 @@ import {BillingService} from "../../../../../../services/billing/billing.service
   selector: 'combo-billing-status',
   templateUrl: './combo-billing-status.component.html'
 })
-export class ComboBillingStatusComponent extends CommonFieldFormComponent implements OnInit {
+export class ComboBillingStatusComponent extends CommonPartnerFormComponent implements OnInit {
 private selectUndefinedOptionValue:any;
   billingStatus:BillingStatus[] = [];
 

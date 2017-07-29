@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {CommonFieldFormComponent} from "../../common-field-form-component";
+import {CommonPartnerFormComponent} from "../../common-partner-form-component";
 import {FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'optional-client-level',
   templateUrl: './optional-client-level.component.html'
 })
-export class OptionalClientLevelComponent  extends CommonFieldFormComponent implements OnInit {
+export class OptionalClientLevelComponent  extends CommonPartnerFormComponent implements OnInit {
 
   @Input()
   public formGroup: FormGroup;
