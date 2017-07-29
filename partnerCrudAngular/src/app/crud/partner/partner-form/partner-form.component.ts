@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl,FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {Partner} from "../../../model/partner";
@@ -18,29 +18,16 @@ import {PartnerConfiguration} from "../../../model/partner_configuration";
 export class PartnerFormComponent implements OnInit {
 
 
-  form: FormGroup;
+  private partnerForm: FormGroup;
   title: string;
   partner: Partner = new Partner();
   partnerConfiguration: PartnerConfiguration = new PartnerConfiguration();
 
   constructor(
-    formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private partnerService: PartnerService
-  ) {
-    this.form = formBuilder.group({
-      name: ['', [ Validators.required,Validators.minLength(3)]],
-      status: ['', [ Validators.required /*,BasicValidators.email*/]]
-      /*,phone: []/*,
-      address: formBuilder.group({
-        street: ['', Validators.minLength(3)],
-        suite: [],
-        city: ['', Validators.maxLength(30)],
-        zipcode: ['', Validators.pattern('^([0-9]){5}([-])([0-9]){4}$')]
-      })*/
-    });
-  }
+  ) {  }
 
 
 
@@ -58,7 +45,7 @@ export class PartnerFormComponent implements OnInit {
 
   save() {
     var result,
-      partnerValue = this.form.value;
+      partnerValue = this.partnerForm.value;
 
     if (partnerValue.id){
       result = this.partnerService.updatePartner(partnerValue);

@@ -4,11 +4,12 @@
   </div>
   <br>
   <form [formGroup]="partnerForm" (ngSubmit)="save()">
-    <legal-information
-      [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration" ></legal-information>
+    <!--<legal-information
+      [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration" ></legal-information>-->
+    <combo-billing-entity [(formGroup)]="partnerForm"       [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration"></combo-billing-entity>
 
     <div class="buttons_form">
-      <button class="save_button_form" type="submit" [disabled]="!form.valid">
+      <button class="save_button_form" type="submit" [disabled]="!partnerForm.valid">
         Add
       </button>
 

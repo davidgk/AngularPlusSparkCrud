@@ -1,6 +1,7 @@
 export class PartnerConfiguration{
   partnerConfigurationKey:number;
   partnerKey:number;
+  fakeBillingEntity:string;
   /*version:number;
   notificationUrl:string;
   requireAcquirerReferenceNumber:number;

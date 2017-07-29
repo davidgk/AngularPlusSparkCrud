@@ -64,7 +64,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>pruebas.partner/ParnerServiceMain</mainClass>
+              <mainClass>pruebas.partner/ServicesMain</mainClass>
             </manifest>
           </archive>
         </configuration>
