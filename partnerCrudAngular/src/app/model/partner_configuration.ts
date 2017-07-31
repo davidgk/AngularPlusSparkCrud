@@ -38,7 +38,7 @@ export class PartnerConfiguration{
   billingPartnerId:string;*/
   isClientLevelContractEntity:boolean;
 
-  getFakeBillingEntitykey() {
+  getBillingEntityKey() {
     return this.fakeBillingEntitykey;
   }
 }

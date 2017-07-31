@@ -13,6 +13,6 @@ export class PartnerGlobal {
     }
 
   getBillingEntityKey() {
-    return (<PartnerConfiguration>this.partnerConfiguration).getFakeBillingEntitykey();
+    return (<PartnerConfiguration>this.partnerConfiguration).getBillingEntityKey();
   }
 }

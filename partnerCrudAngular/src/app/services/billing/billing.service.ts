@@ -21,7 +21,7 @@ export class BillingService {
       .map(res => res.json());
   }
 
-  getBillingEntityBykey= (fakeBillingEntitykey: number) => {
+  getBillingEntityBykey (fakeBillingEntitykey: number) {
     return this.http.get(this.getEntityUrl() +"/"+fakeBillingEntitykey)
       .map(res => res.json());
   }

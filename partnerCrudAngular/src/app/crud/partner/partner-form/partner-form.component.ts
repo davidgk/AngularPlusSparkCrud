@@ -58,7 +58,7 @@ export class PartnerFormComponent implements OnInit {
         return;
 
       this.obtainPartnerFromId(id);
-      this.obtainPartnerConfigurationFromId()
+
 
     });
   }
@@ -79,14 +79,15 @@ export class PartnerFormComponent implements OnInit {
   private obtainPartnerFromId (id: number) {
     this.partnerService.getPartner(id)
       .subscribe( partner => {
-        () => this.initPartnerGlobal();
-        ((partner) => {this.partnerGlobal.partner = partner});
+         this.initPartnerGlobal();
+        this.partnerGlobal.partner = partner;
         this.title = id ? 'Edit Partner ' + '\"' + this.partnerGlobal.partner.name + '\"' : 'New Partner';
       },response => {
           if (response.status == 404) {
             this.router.navigate(['NotFound']);
           }
         });
+      this.obtainPartnerConfigurationFromId();
 
   }
 
@@ -102,12 +103,11 @@ export class PartnerFormComponent implements OnInit {
 
   private obtainPartnerConfigurationFromId () {
     this.partnerService.getPartnerConfiguration(this.partnerGlobal.partner.partner_key)
-      .subscribe(
-        partnerConfiguration => {
-            (partnerConfiguration) => {this.partnerGlobal.partnerConfiguration = <PartnerConfiguration> <any> partnerConfiguration;}
-            () => {() => {this.obtainBillingEntity()}}
-          },
-        response => {
+      .subscribe(partnerConfiguration => {
+            var newPartnerConfiguration =JSON.parse(JSON.stringify(partnerConfiguration));
+            console.log(newPartnerConfiguration.fakeBillingEntitykey);
+            this.billingService.getBillingEntityBykey(newPartnerConfiguration.fakeBillingEntitykey);
+        },response => {
           if (response.status == 404) {
             console.log("Fail Obtaining partnerConfiguration "+ response.message)
             this.router.navigate(['NotFound']);
@@ -115,11 +115,6 @@ export class PartnerFormComponent implements OnInit {
         });
   }
 
-  private obtainBillingEntity() {
-    let partnerConfiguration = this.partnerGlobal.partnerConfiguration;
-    this.billingService.getBillingEntityBykey(partnerConfiguration.fakeBillingEntitykey)
-      .subscribe(data => {partnerConfiguration.billingEntity = data});
-  }
 
 
 
