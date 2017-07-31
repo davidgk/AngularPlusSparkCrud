@@ -17,8 +17,8 @@ public class BillingService {
 
     static{
         entities = new HashMap<>();
-        entities.put("1", BillingEntity.create("BillingEntity_01") );
-        entities.put("2", BillingEntity.create("BillingEntity_02") );
+        entities.put("1", BillingEntity.create("BillingEntity_01", 1L) );
+        entities.put("2", BillingEntity.create("BillingEntity_02", 2L) );
         status = new HashMap<>();
         status.put("1", "enabled" );
         status.put("2", "disabled");
@@ -37,7 +37,13 @@ public class BillingService {
 
     }
 
+
+
     public List getBillingStatus() {
         return OthersUtils.getListFromMap(status);
+    }
+
+    public BillingEntity getBillingEntityBykey(String key) {
+        return entities.get(key);
     }
 }

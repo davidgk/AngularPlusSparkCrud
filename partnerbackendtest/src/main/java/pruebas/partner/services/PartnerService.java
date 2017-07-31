@@ -64,7 +64,7 @@ public class PartnerService {
             ,"address2","city","state","zipcode","country","contactFirstName",
             "contactLastName","1234561231312","asd@asd.com.ar","supportUrl",
             "1111111111","supportEmail@as.com",true, "cascadeDisableDescriptors","clientAutoClosed"
-            ,true, true, 1, 1, 1, 1, true);
+            ,true, true, 1, 1, 1, 1, true, 1L);
         return partnerConfiguration;
     }
 }

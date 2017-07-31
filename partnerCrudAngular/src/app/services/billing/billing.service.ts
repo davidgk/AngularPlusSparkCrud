@@ -20,4 +20,13 @@ export class BillingService {
     return this.http.get(this.url+"/status")
       .map(res => res.json());
   }
+
+  getBillingEntityBykey= (fakeBillingEntitykey: number) => {
+    return this.http.get(this.getEntityUrl() +"/"+fakeBillingEntitykey)
+      .map(res => res.json());
+  }
+
+  private getEntityUrl() {
+    return this.url + "/entity"
+  }
 }

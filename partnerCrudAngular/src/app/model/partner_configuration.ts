@@ -1,7 +1,9 @@
+import {BillingEntitity} from "./billing_entity";
 export class PartnerConfiguration{
-  partnerConfigurationKey:number;
-  partnerKey:number;
-  fakeBillingEntity:string;
+  public partnerConfigurationKey:number;
+  public partnerKey:number;
+  public fakeBillingEntitykey:number;
+  public billingEntity:BillingEntitity;
   /*version:number;
   notificationUrl:string;
   requireAcquirerReferenceNumber:number;
@@ -35,4 +37,8 @@ export class PartnerConfiguration{
   partnerTypeKey:number;
   billingPartnerId:string;*/
   isClientLevelContractEntity:boolean;
+
+  getFakeBillingEntitykey() {
+    return this.fakeBillingEntitykey;
+  }
 }

@@ -4,23 +4,27 @@
   </div>
   <br>
   <form [formGroup]="partnerForm" (ngSubmit)="save()">
-    <div>
+    <div formGroupName="legalInformation">
       <table class="tables_showing_form">
-        <thead class="thead_tables_showing_form">
+          <thead class="thead_tables_showing_form">
         <tr>
           <th>
             <div class="innerTableTitle">{{titleLegalInformation}}</div></th>
         </tr>
-        </thead>
-        <tbody>
-          <!--<tr> <optional-client-level [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration"></optional-client-level>    </tr>
-          <tr> <combo-contract-entity [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration"></combo-contract-entity>    </tr>-->
-          <tr> <combo-billing-entity name="billingEntity" [formGroup]="partnerForm" [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration"></combo-billing-entity></tr>
-          <!--<tr> <combo-partner-type [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration"></combo-partner-type>    </tr>
-          <tr> <combo-billing-status [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration"></combo-billing-status>    </tr>
-          <tr> <combo-integration-status [(partner)]="partner" [(partnerConfiguration)]="partnerConfiguration"></combo-integration-status>    </tr>-->
-
-        </tbody>
+            </thead>
+            <tbody>
+              <div class="components_situation" ng-show="!billingEntity_isRequired">
+                <div class="field_form_title">{{billingEntity_title}}
+                  <span class="is_required_form" >*</span>
+                </div>
+                  <select name="billingEntity" [(ngModel)]="partnerGloblal.partnerConfiguration.billingEntity">
+                    <option *ngFor="let bt of billingEntities" [ngValue]="bt">
+                      {{bt.fakeBillingEntityName}}
+                    </option>
+                  </select>
+                <div class="some_explanation_form_field">{{billingEntity_someExplanation}}</div>
+              </div>
+            </tbody>
       </table>
 
 

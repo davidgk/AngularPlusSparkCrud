@@ -1,3 +1,4 @@
 export class BillingEntitity {
-  name:string;
+  key:number;
+  fakeBillingEntityName:string;
 }

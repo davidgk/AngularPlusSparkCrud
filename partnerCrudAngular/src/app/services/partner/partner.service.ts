@@ -27,7 +27,7 @@ export class PartnerService {
     return this.url + "/" + key;
   }
 
-  getPartner(id){
+  getPartner = (id) => {
     return this.http.get(this.getPartnerUrl(id))
       .map(res => res.json());
   }
@@ -47,7 +47,7 @@ export class PartnerService {
       .map(res => res.json());
   }
 
-  getPartnerConfiguration(key: number) {
+  getPartnerConfiguration= (key:number) => {
     return this.http.get(this.url+"/configuration/"+key)
       .map(res => res.json());
   }

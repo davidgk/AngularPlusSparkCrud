@@ -6,6 +6,7 @@ package pruebas.partner.model;
 public class PartnerConfiguration {
     private Long partnerConfigurationKey;
     private Long partnerKey;
+    private Long fakeBillingEntityKey;
     /*private String version;
     private String notificationUrl;
     private Boolean requireAcquirerReferenceNumber;
@@ -50,7 +51,7 @@ public class PartnerConfiguration {
         String clientAutoClosed, Boolean enableInvoiceCreditNotifications,
         Boolean ignoreSixMonthDisableDeleteRule, Integer contractEntityKey,
         Integer partnerStatusKey, Integer partnerTypeKey, Integer billingPartnerId,
-        Boolean isClientLevelContractEntity) {
+        Boolean isClientLevelContractEntity, Long fakeBillingEntityKey) {
         PartnerConfiguration partnerConfiguration = new PartnerConfiguration();
         partnerConfiguration.partnerConfigurationKey= partnerConfigurationKey;
         partnerConfiguration.partnerKey= partnerKey;
@@ -85,6 +86,7 @@ public class PartnerConfiguration {
         partnerConfiguration.partnerTypeKey= partnerTypeKey;
         partnerConfiguration.billingPartnerId= billingPartnerId;*/
         partnerConfiguration.isClientLevelContractEntity= isClientLevelContractEntity;
+        partnerConfiguration.fakeBillingEntityKey= fakeBillingEntityKey;
         return partnerConfiguration;
     }
 
@@ -93,6 +95,7 @@ public class PartnerConfiguration {
         partnerConfiguration.partnerConfigurationKey= partnerConfigurationKey;
         partnerConfiguration.partnerKey= partnerKey;
         partnerConfiguration.isClientLevelContractEntity= isClientLevelContractEntity;
+        partnerConfiguration.fakeBillingEntityKey= 1L;
         return partnerConfiguration;
     }
 
