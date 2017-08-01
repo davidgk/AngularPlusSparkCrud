@@ -23,25 +23,24 @@ import {PartnerGlobal} from "../../../model/partnerGlobal";
 export class PartnerFormComponent implements OnInit {
 
   private selectUndefinedOptionValue:any;
+  private billingEntitySelected:BillingEntitity;
   private partnerForm: FormGroup;
   title: string;
   public titleLegalInformation:string
   public billingEntity_isRequired:boolean;
   public billingEntity_title:string;
   public billingEntity_someExplanation:string;
-  private billingEntities:BillingEntitity[] = [];
-  private partnerGlobal: PartnerGlobal;
+  public billingEntities:BillingEntitity[] = [];
+  public partnerGlobal: PartnerGlobal;
+
 
 
 
   constructor(formBuilder: FormBuilder,    private router: Router,
     private route: ActivatedRoute,    private partnerService: PartnerService,
     private billingService: BillingService) {
-      this.partnerForm =  new FormGroup({
-          legalInformation: formBuilder.group({
-            billingEntity:new FormControl()
-          })
-        });
+      this.partnerGlobal = PartnerGlobal.buildMe();
+      this.billingEntitySelected = this.partnerGlobal.partnerConfiguration.billingEntity;
       this.configLegalInformation();
       this.loadComponents();
     }
@@ -67,7 +66,7 @@ export class PartnerFormComponent implements OnInit {
   }
 
   private configPartner(partner, id: number) {
-    this.partnerGlobal = PartnerGlobal.buildMe(partner);
+    this.partnerGlobal.partner = partner;
     this.title = id ? 'Edit Partner ' + '\"' + this.partnerGlobal.partner.name + '\"' : 'New Partner';
     this.obtainPartnerConfigurationFromId();
   }
@@ -86,11 +85,16 @@ export class PartnerFormComponent implements OnInit {
 
   loadPartnerConfiguration(partnerConfiguration: PartnerConfiguration, formComponent:PartnerFormComponent) {
     formComponent.partnerGlobal.partnerConfiguration = partnerConfiguration;
+    this.completeBillingEntityCombo(formComponent);
+  }
+
+  private completeBillingEntityCombo(formComponent: PartnerFormComponent) {
     let billingEntityKey = formComponent.partnerGlobal.getBillingEntityKey();
     this.billingService.getBillingEntityByKey(billingEntityKey).subscribe(
       data => {
         formComponent.partnerGlobal.partnerConfiguration.billingEntity = data;
-      },response => {
+        formComponent.billingEntitySelected = data;
+      }, response => {
         if (response.status == 404) {
           formComponent.router.navigate(['NotFound']);
         }

@@ -8,7 +8,7 @@ export class PartnerGlobal {
     static buildMe(partner?:Partner) {
         let partnerGlobal : PartnerGlobal = new PartnerGlobal();
         partnerGlobal.partner = (partner!=null)?partner:new Partner;
-        partnerGlobal.partnerConfiguration = new PartnerConfiguration();
+        partnerGlobal.partnerConfiguration = PartnerConfiguration.initDummy()
         return partnerGlobal;
     }
 

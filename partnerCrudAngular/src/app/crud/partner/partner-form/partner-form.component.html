@@ -3,36 +3,29 @@
     {{title}}
   </div>
   <br>
-  <form [formGroup]="partnerForm" (ngSubmit)="save()">
-    <div>
-      <table class="tables_showing_form">
-          <thead class="thead_tables_showing_form">
-        <tr>
-          <th>
-            <div class="innerTableTitle">{{titleLegalInformation}}</div></th>
-        </tr>
-            </thead>
-            <tbody>
-            <div formGroupName="legalInformation">
-              <div class="components_situation" ng-show="!billingEntity_isRequired">
-                <div class="field_form_title">{{billingEntity_title}}
-                  <span class="is_required_form" >*</span>
-                </div>
-                  <select formGroupName="billingEntity" name="billingEntity">
-                    <option *ngFor="let bt of billingEntities" [ngValue]="bt">
-                      {{bt.fakeBillingEntityName}}
-                    </option>
-                  </select>
-                <div class="some_explanation_form_field">{{billingEntity_someExplanation}}</div>
-              </div>
-            </div>
-            </tbody>
-      </table>
-
-
-    </div>
-
-
+  <form (ngSubmit)="save()" #myPartnerForm="ngForm">
+    <table class="tables_showing_form">
+      <thead class="thead_tables_showing_form">
+      <tr>
+        <th>
+          <div class="innerTableTitle">{{titleLegalInformation}}</div></th>
+      </tr>
+      </thead>
+      <tbody>
+        <div class="components_situation" ng-show="!billingEntity_isRequired">
+          <div class="field_form_title">{{billingEntity_title}}
+            <span class="is_required_form" >*</span>
+          </div>
+            <select required name="billingEntity"
+              [(ngModel)]="billingEntitySelected.key">
+              <option *ngFor="let bt of billingEntities" value= {{bt.key}}>
+                {{bt.fakeBillingEntityName}}
+              </option>
+            </select>
+          <div class="some_explanation_form_field">{{billingEntity_someExplanation}}</div>
+        </div>
+      </tbody>
+    </table>
     <div class="buttons_form">
       <button class="save_button_form" type="submit" >
         Add

@@ -39,4 +39,13 @@ export class PartnerConfiguration{
   isClientLevelContractEntity:boolean;
 
 
+  static initDummy() {
+    let partnerConf: PartnerConfiguration = new PartnerConfiguration();
+    let dummy:BillingEntitity = new BillingEntitity();
+    dummy.key =0;
+    dummy.fakeBillingEntityName="----Select-----"
+    partnerConf.billingEntity = dummy;
+    return partnerConf;
+
+  }
 }
