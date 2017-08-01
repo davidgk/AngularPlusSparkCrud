@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PartnerService} from "../../../services/partner/partner.service";
 import {PartnerConfiguration} from "../../../model/partner_configuration";
@@ -7,6 +7,7 @@ import {OptionalClientLevelComponent} from "./components/legal-information/optio
 import {ComboContractEntityComponent} from "./components/legal-information/combo-contract-entity/combo-contract-entity.component";
 import {ComboPartnerTypeComponent} from "./components/legal-information/combo-partner-type/combo-partner-type.component";
 import {ComboBillingEntityComponent} from "./components/legal-information/combo-billing-entity/combo-billing-entity.component";
+import {BillingEntityData} from "./components/legal-information/combo-billing-entity/billing-entity-data";
 import {ComboBillingStatusComponent} from "./components/legal-information/combo-billing-status/combo-billing-status.component";
 import {ComboIntegrationStatusComponent} from "./components/legal-information/combo-integration-status/combo-integration-status.component";
 import {BillingEntitity} from "../../../model/billing_entity";
@@ -23,26 +24,24 @@ import {PartnerGlobal} from "../../../model/partnerGlobal";
 export class PartnerFormComponent implements OnInit {
 
   private selectUndefinedOptionValue:any;
-  private billingEntitySelected:BillingEntitity;
+  public billingEntityData: BillingEntityData;
   private partnerForm: FormGroup;
   title: string;
   public titleLegalInformation:string
-  public billingEntity_isRequired:boolean;
-  public billingEntity_title:string;
-  public billingEntity_someExplanation:string;
-  public billingEntities:BillingEntitity[] = [];
   public partnerGlobal: PartnerGlobal;
 
 
-
-
-  constructor(formBuilder: FormBuilder,    private router: Router,
+  constructor(formBuilder: FormBuilder,    public router: Router,
     private route: ActivatedRoute,    private partnerService: PartnerService,
     private billingService: BillingService) {
       this.partnerGlobal = PartnerGlobal.buildMe();
-      this.billingEntitySelected = this.partnerGlobal.partnerConfiguration.billingEntity;
+      this.billingEntityData = new BillingEntityData(billingService, this);
+      this.partnerForm = formBuilder.group({
+        billingEntity: ['', [
+          Validators.required
+        ]]
+      });
       this.configLegalInformation();
-      this.loadComponents();
     }
 
   ngOnInit() {
@@ -85,21 +84,10 @@ export class PartnerFormComponent implements OnInit {
 
   loadPartnerConfiguration(partnerConfiguration: PartnerConfiguration, formComponent:PartnerFormComponent) {
     formComponent.partnerGlobal.partnerConfiguration = partnerConfiguration;
-    this.completeBillingEntityCombo(formComponent);
+    this.billingEntityData.completeBillingEntityCombo(formComponent);
   }
 
-  private completeBillingEntityCombo(formComponent: PartnerFormComponent) {
-    let billingEntityKey = formComponent.partnerGlobal.getBillingEntityKey();
-    this.billingService.getBillingEntityByKey(billingEntityKey).subscribe(
-      data => {
-        formComponent.partnerGlobal.partnerConfiguration.billingEntity = data;
-        formComponent.billingEntitySelected = data;
-      }, response => {
-        if (response.status == 404) {
-          formComponent.router.navigate(['NotFound']);
-        }
-      });
-  }
+
 
   save() {
     var result,
@@ -114,30 +102,11 @@ export class PartnerFormComponent implements OnInit {
     result.subscribe(data => this.router.navigate(['partners']));
   }
 
-
-  private loadComponents() {
-    this.loadBillingEntity();
-  }
-
-
-
-
-
-  private loadBillingEntity() {
-    this.billingService.getBillingEntities()
-      .subscribe(data => this.billingEntities = data);
-  }
-
   private configLegalInformation() {
-    this.configBillingEntityField();
-
-  }
-
-  private configBillingEntityField() {
     this.titleLegalInformation ="Legal Information"
-    this.billingEntity_isRequired=true;
-    this.billingEntity_title="Billing Entity";
-    this.billingEntity_someExplanation="Identifies entity responsible for billing invoice";
+    this.billingEntityData.configBillingEntityField();
 
   }
+
+
 }

@@ -12,22 +12,23 @@
       </tr>
       </thead>
       <tbody>
-        <div class="components_situation" ng-show="!billingEntity_isRequired">
-          <div class="field_form_title">{{billingEntity_title}}
+        <div class="components_situation" ng-show="!billingEntityData.isRequired">
+          <div class="field_form_title">{{billingEntityData.title}}
             <span class="is_required_form" >*</span>
           </div>
             <select required name="billingEntity"
-              [(ngModel)]="billingEntitySelected.key">
-              <option *ngFor="let bt of billingEntities" value= {{bt.key}}>
+              [(ngModel)]="billingEntityData.billingEntitySelected.key">
+              <option *ngFor="let bt of billingEntityData.billingEntities" value= {{bt.key}}>
                 {{bt.fakeBillingEntityName}}
               </option>
             </select>
-          <div class="some_explanation_form_field">{{billingEntity_someExplanation}}</div>
+          <div class="some_explanation_form_field">{{billingEntityData.someExplanation}}</div>
         </div>
       </tbody>
     </table>
+    <pre>{{billingEntity | json }}</pre>
     <div class="buttons_form">
-      <button class="save_button_form" type="submit" >
+      <button class="save_button_form" type="submit" onclick="save()">
         Add
       </button>
 
