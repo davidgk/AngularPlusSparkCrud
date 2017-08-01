@@ -1,9 +1,6 @@
-///<reference path="components/legal-information/optional-client-level/optional-client-level.component.ts"/>
 import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-
-import {Partner} from "../../../model/partner";
 import {PartnerService} from "../../../services/partner/partner.service";
 import {PartnerConfiguration} from "../../../model/partner_configuration";
 import {OptionalClientLevelComponent} from "./components/legal-information/optional-client-level/optional-client-level.component";
@@ -32,35 +29,72 @@ export class PartnerFormComponent implements OnInit {
   public billingEntity_isRequired:boolean;
   public billingEntity_title:string;
   public billingEntity_someExplanation:string;
-  public billingEntitySelected:BillingEntitity;
   private billingEntities:BillingEntitity[] = [];
   private partnerGlobal: PartnerGlobal;
 
 
 
   constructor(formBuilder: FormBuilder,    private router: Router,
-    private route: ActivatedRoute,    private partnerService: PartnerService,    private billingService: BillingService) {
-            this.partnerGlobal = PartnerGlobal.buildMe();
-            this.partnerForm =  new FormGroup({
-              legalInformation: formBuilder.group({
-                billingEntity:[]
-              })
-            });
-          this.configLegalInformation();
-          this.loadComponents();
+    private route: ActivatedRoute,    private partnerService: PartnerService,
+    private billingService: BillingService) {
+      this.partnerForm =  new FormGroup({
+          legalInformation: formBuilder.group({
+            billingEntity:new FormControl()
+          })
+        });
+      this.configLegalInformation();
+      this.loadComponents();
     }
 
   ngOnInit() {
-    var id = this.route.params.subscribe(params => {
+    let id = this.route.params.subscribe(params => {
       var id = params['id'];
-
       if (!id)
         return;
-
       this.obtainPartnerFromId(id);
-
-
     });
+  }
+
+  private obtainPartnerFromId (id: number) {
+    this.partnerService.getPartner(id)
+      .subscribe( partner => {
+        this.configPartner(partner, id);
+      },response => {
+          if (response.status == 404) {
+            this.router.navigate(['NotFound']);
+          }
+      });
+  }
+
+  private configPartner(partner, id: number) {
+    this.partnerGlobal = PartnerGlobal.buildMe(partner);
+    this.title = id ? 'Edit Partner ' + '\"' + this.partnerGlobal.partner.name + '\"' : 'New Partner';
+    this.obtainPartnerConfigurationFromId();
+  }
+
+  private obtainPartnerConfigurationFromId () {
+    let partner= this.partnerGlobal.partner;
+    this.partnerService.getPartnerConfiguration(partner.partner_key)
+      .subscribe(data => {
+          this.loadPartnerConfiguration(data, this);
+        },response => {
+        if (response.status == 404) {
+          this.router.navigate(['NotFound']);
+        }
+      });
+   }
+
+  loadPartnerConfiguration(partnerConfiguration: PartnerConfiguration, formComponent:PartnerFormComponent) {
+    formComponent.partnerGlobal.partnerConfiguration = partnerConfiguration;
+    let billingEntityKey = formComponent.partnerGlobal.getBillingEntityKey();
+    this.billingService.getBillingEntityByKey(billingEntityKey).subscribe(
+      data => {
+        formComponent.partnerGlobal.partnerConfiguration.billingEntity = data;
+      },response => {
+        if (response.status == 404) {
+          formComponent.router.navigate(['NotFound']);
+        }
+      });
   }
 
   save() {
@@ -75,48 +109,6 @@ export class PartnerFormComponent implements OnInit {
 
     result.subscribe(data => this.router.navigate(['partners']));
   }
-
-  private obtainPartnerFromId (id: number) {
-    this.partnerService.getPartner(id)
-      .subscribe( partner => {
-         this.initPartnerGlobal();
-        this.partnerGlobal.partner = partner;
-        this.title = id ? 'Edit Partner ' + '\"' + this.partnerGlobal.partner.name + '\"' : 'New Partner';
-      },response => {
-          if (response.status == 404) {
-            this.router.navigate(['NotFound']);
-          }
-        });
-      this.obtainPartnerConfigurationFromId();
-
-  }
-
-  private initPartnerGlobal() {
-    this.partnerGlobal = PartnerGlobal.buildMe();
-  }
-
-  loadPartner (partner:any, id: number) {
-    this.partnerGlobal.partner = partner;
-
-    this.obtainPartnerConfigurationFromId();
-  }
-
-  private obtainPartnerConfigurationFromId () {
-    this.partnerService.getPartnerConfiguration(this.partnerGlobal.partner.partner_key)
-      .subscribe(partnerConfiguration => {
-            var newPartnerConfiguration =JSON.parse(JSON.stringify(partnerConfiguration));
-            console.log(newPartnerConfiguration.fakeBillingEntitykey);
-            this.billingService.getBillingEntityBykey(newPartnerConfiguration.fakeBillingEntitykey);
-        },response => {
-          if (response.status == 404) {
-            console.log("Fail Obtaining partnerConfiguration "+ response.message)
-            this.router.navigate(['NotFound']);
-          }
-        });
-  }
-
-
-
 
 
   private loadComponents() {

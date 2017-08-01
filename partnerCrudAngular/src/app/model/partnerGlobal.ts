@@ -5,14 +5,14 @@ export class PartnerGlobal {
     public partner:Partner;
     public partnerConfiguration:PartnerConfiguration;
 
-    static buildMe() {
+    static buildMe(partner?:Partner) {
         let partnerGlobal : PartnerGlobal = new PartnerGlobal();
+        partnerGlobal.partner = (partner!=null)?partner:new Partner;
         partnerGlobal.partnerConfiguration = new PartnerConfiguration();
-        partnerGlobal.partner = new Partner();
         return partnerGlobal;
     }
 
   getBillingEntityKey() {
-    return (<PartnerConfiguration>this.partnerConfiguration).getBillingEntityKey();
+    return this.partnerConfiguration.fakeBillingEntityKey;
   }
 }

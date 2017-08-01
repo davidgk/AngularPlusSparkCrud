@@ -73,6 +73,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * About forms Reactive error: https://stackoverflow.com/questions/39152071/cant-bind-to-formgroup-since-it-isnt-a-known-property-of-form
 * About forms : https://medium.com/spektrakel-blog/angular2-building-nested-reactive-forms-7978ecd145e4
 * Download this example about cruds: https://github.com/loiane/angular2-crud-rest
+* About type script https://www.typescriptlang.org/docs/handbook/declaration-files/do-s-and-don-ts.html
 
 
 Basado en :

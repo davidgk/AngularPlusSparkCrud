@@ -4,7 +4,7 @@
   </div>
   <br>
   <form [formGroup]="partnerForm" (ngSubmit)="save()">
-    <div formGroupName="legalInformation">
+    <div>
       <table class="tables_showing_form">
           <thead class="thead_tables_showing_form">
         <tr>
@@ -13,17 +13,19 @@
         </tr>
             </thead>
             <tbody>
+            <div formGroupName="legalInformation">
               <div class="components_situation" ng-show="!billingEntity_isRequired">
                 <div class="field_form_title">{{billingEntity_title}}
                   <span class="is_required_form" >*</span>
                 </div>
-                  <select name="billingEntity" [(ngModel)]="partnerGloblal.partnerConfiguration.billingEntity">
+                  <select formGroupName="billingEntity" name="billingEntity">
                     <option *ngFor="let bt of billingEntities" [ngValue]="bt">
                       {{bt.fakeBillingEntityName}}
                     </option>
                   </select>
                 <div class="some_explanation_form_field">{{billingEntity_someExplanation}}</div>
               </div>
+            </div>
             </tbody>
       </table>
 

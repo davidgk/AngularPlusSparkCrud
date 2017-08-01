@@ -49,7 +49,10 @@ export class PartnerService {
 
   getPartnerConfiguration= (key:number) => {
     return this.http.get(this.url+"/configuration/"+key)
-      .map(res => res.json());
+      .map(res => {
+        console.log(res);
+        return res.json()
+      });
   }
 }
 

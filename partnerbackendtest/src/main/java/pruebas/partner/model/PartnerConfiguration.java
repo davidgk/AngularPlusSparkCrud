@@ -95,7 +95,7 @@ public class PartnerConfiguration {
         partnerConfiguration.partnerConfigurationKey= partnerConfigurationKey;
         partnerConfiguration.partnerKey= partnerKey;
         partnerConfiguration.isClientLevelContractEntity= isClientLevelContractEntity;
-        partnerConfiguration.fakeBillingEntityKey= 1L;
+        partnerConfiguration.fakeBillingEntityKey= 2L;
         return partnerConfiguration;
     }
 
