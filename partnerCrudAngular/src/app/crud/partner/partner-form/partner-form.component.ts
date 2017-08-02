@@ -3,46 +3,64 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PartnerService} from "../../../services/partner/partner.service";
 import {PartnerConfiguration} from "../../../model/partner_configuration";
-import {OptionalClientLevelComponent} from "./components/legal-information/optional-client-level/optional-client-level.component";
-import {ComboContractEntityComponent} from "./components/legal-information/combo-contract-entity/combo-contract-entity.component";
-import {ComboPartnerTypeComponent} from "./components/legal-information/combo-partner-type/combo-partner-type.component";
-import {ComboBillingEntityComponent} from "./components/legal-information/combo-billing-entity/combo-billing-entity.component";
-import {BillingEntityData} from "./components/legal-information/combo-billing-entity/billing-entity-data";
-import {ComboBillingStatusComponent} from "./components/legal-information/combo-billing-status/combo-billing-status.component";
-import {ComboIntegrationStatusComponent} from "./components/legal-information/combo-integration-status/combo-integration-status.component";
-import {BillingEntitity} from "../../../model/billing_entity";
+import {BillingEntityData} from "./components/legal-information/billing-entity-data";
+
 import {BillingService} from "../../../services/billing/billing.service";
 import {PartnerGlobal} from "../../../model/partnerGlobal";
+import {PartnerTypeData} from "./components/legal-information/partner-type-data";
+import {ClientLevelData} from "./components/legal-information/client-level-data";
+import {BillingStatusData} from "./components/legal-information/billing-status-data";
+import {ContractEntityData} from "./components/legal-information/contract-entity-data";
+import {IntegrationTypeData} from "./components/legal-information/integration-type-data";
+import {ContractEntitiesService} from "../../../services/contract-entity/contract-entities.service";
+import {IntegrationService} from "../../../services/integration/integration.service";
 
 
 @Component({
   selector: 'partner-form',
   templateUrl: './partner-form.component.html',
-  entryComponents:[OptionalClientLevelComponent, ComboContractEntityComponent
-    , ComboPartnerTypeComponent, ComboBillingEntityComponent , ComboBillingStatusComponent , ComboIntegrationStatusComponent  ]
+  entryComponents:[]
 })
 export class PartnerFormComponent implements OnInit {
 
-  private selectUndefinedOptionValue:any;
+
   public billingEntityData: BillingEntityData;
-  private partnerForm: FormGroup;
+  public billingStatusData: BillingStatusData;
+  public contractEntityData: ContractEntityData;
+  public integrationTypeData: IntegrationTypeData;
+  public clientLevelData: ClientLevelData;
+  public partnerTypeData: PartnerTypeData;
+
+
   title: string;
+  private partnerForm: FormGroup;
   public titleLegalInformation:string
   public partnerGlobal: PartnerGlobal;
 
 
   constructor(formBuilder: FormBuilder,    public router: Router,
-    private route: ActivatedRoute,    private partnerService: PartnerService,
-    private billingService: BillingService) {
+    private route: ActivatedRoute,
+    private partnerService: PartnerService,
+    private contractEntitiesService: ContractEntitiesService,
+    private integrationService: IntegrationService,
+    private billingService: BillingService, ) {
+      this.initDataComponents();
       this.partnerGlobal = PartnerGlobal.buildMe();
-      this.billingEntityData = new BillingEntityData(billingService, this);
       this.partnerForm = formBuilder.group({
-        billingEntity: ['', [
-          Validators.required
-        ]]
+        billingEntity: ['', [Validators.required]]
+        //, billingEntity: ['', [Validators.required]]
       });
       this.configLegalInformation();
     }
+
+  private initDataComponents() {
+    this.clientLevelData = new ClientLevelData( this);
+    this.billingEntityData = new BillingEntityData(this.billingService, this);
+    this.billingStatusData = new BillingStatusData(this.billingService, this);
+    this.contractEntityData= new ContractEntityData(this.contractEntitiesService,  this);
+    this.integrationTypeData= new IntegrationTypeData(this.integrationService,  this);
+    this.partnerTypeData = new PartnerTypeData(this.partnerService, this);
+  }
 
   ngOnInit() {
     let id = this.route.params.subscribe(params => {
@@ -84,7 +102,12 @@ export class PartnerFormComponent implements OnInit {
 
   loadPartnerConfiguration(partnerConfiguration: PartnerConfiguration, formComponent:PartnerFormComponent) {
     formComponent.partnerGlobal.partnerConfiguration = partnerConfiguration;
-    this.billingEntityData.completeBillingEntityCombo(formComponent);
+    this.clientLevelData.loadEntityData()
+    this.billingEntityData.completeBillingEntityCombo();
+    this.billingStatusData.completeBillingEntityCombo();
+    this.contractEntityData.completeBillingEntityCombo();
+    this.integrationTypeData.completeBillingEntityCombo();
+    this.partnerTypeData.completeBillingEntityCombo();
   }
 
 
@@ -104,7 +127,12 @@ export class PartnerFormComponent implements OnInit {
 
   private configLegalInformation() {
     this.titleLegalInformation ="Legal Information"
-    this.billingEntityData.configBillingEntityField();
+    this.clientLevelData.configEntityField();
+    this.billingEntityData.configEntityField();
+    this.billingStatusData.configEntityField();
+    this.contractEntityData.configEntityField();
+    this.integrationTypeData.configEntityField();
+    this.partnerTypeData.configEntityField();
 
   }
 

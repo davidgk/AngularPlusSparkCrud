@@ -1,5 +1,6 @@
 import {BillingEntitity} from "./billing_entity";
-export class PartnerConfiguration{
+import {CommonDomainEntity} from "./common-domain-entity";
+export class PartnerConfiguration implements CommonDomainEntity{
   public partnerConfigurationKey:number;
   public partnerKey:number;
   public fakeBillingEntityKey:number;

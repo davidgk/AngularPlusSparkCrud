@@ -1,4 +1,5 @@
-export class BillingEntitity {
+import {CommonDomainEntity} from "./common-domain-entity";
+export class BillingEntitity implements CommonDomainEntity{
   key:number;
   fakeBillingEntityName:string;
 
