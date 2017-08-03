@@ -9,7 +9,7 @@ import {BillingService} from "../../../services/billing/billing.service";
 import {PartnerGlobal} from "../../../model/partner-global";
 import {PartnerTypeData} from "./components/legal-information/partner-type-data";
 import {ClientLevelData} from "./components/legal-information/client-level-data";
-import {BillingStatusData} from "./components/legal-information/billing-status-data";
+import {PartnerStatusData} from "./components/legal-information/partner-status-data";
 import {ContractEntityData} from "./components/legal-information/contract-entity-data";
 import {IntegrationTypeData} from "./components/legal-information/integration-type-data";
 import {ContractEntitiesService} from "../../../services/contract-entity/contract-entities.service";
@@ -25,7 +25,7 @@ export class PartnerFormComponent implements OnInit {
 
 
   public billingEntityData: BillingEntityData;
-  public billingStatusData: BillingStatusData;
+  public partnerStatusData: PartnerStatusData;
   public contractEntityData: ContractEntityData;
   public integrationTypeData: IntegrationTypeData;
   public clientLevelData: ClientLevelData;
@@ -57,8 +57,9 @@ export class PartnerFormComponent implements OnInit {
     this.clientLevelData = new ClientLevelData( this);
     this.contractEntityData= new ContractEntityData(this.contractEntitiesService,  this);
     this.billingEntityData = new BillingEntityData(this.billingService, this);
-    /*this.partnerTypeData = new PartnerTypeData(this.partnerService, this);
-    this.billingStatusData = new BillingStatusData(this.billingService, this);
+    this.partnerTypeData = new PartnerTypeData(this.partnerService, this);
+    this.partnerStatusData = new PartnerStatusData(this.partnerService, this);
+    /*
     this.integrationTypeData= new IntegrationTypeData(this.integrationService,  this);*/
   }
 
@@ -105,9 +106,9 @@ export class PartnerFormComponent implements OnInit {
     this.clientLevelData.loadEntityData()
     this.contractEntityData.completeEntityCombo();
     this.billingEntityData.completeEntityCombo();
-    /*
     this.partnerTypeData.completeEntityCombo();
-    this.billingStatusData.completeEntityCombo();
+    this.partnerStatusData.completeEntityCombo();
+    /*
     this.integrationTypeData.completeEntityCombo();*/
   }
 
@@ -131,10 +132,10 @@ export class PartnerFormComponent implements OnInit {
     this.clientLevelData.configEntityField();
     this.contractEntityData.configEntityField();
     this.billingEntityData.configEntityField();
+    this.partnerTypeData.configEntityField();
+    this.partnerStatusData.configEntityField();
     /*
-    this.billingStatusData.configEntityField();
-    this.integrationTypeData.configEntityField();
-    this.partnerTypeData.configEntityField();*/
+    this.integrationTypeData.configEntityField();*/
     console.log("end Loading things");
 
   }

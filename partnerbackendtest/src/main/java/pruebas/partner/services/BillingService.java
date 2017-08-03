@@ -13,17 +13,14 @@ import java.util.Map;
 public class BillingService {
 
     private static Map<String, BillingEntity> entities;
-    private static Map<String, String> status;
+
 
     static{
         entities = new HashMap<>();
         entities.put("1", BillingEntity.create("BillingEntity_01", 1L) );
         entities.put("2", BillingEntity.create("BillingEntity_02", 2L) );
-        status = new HashMap<>();
-        status.put("1", "enabled" );
-        status.put("2", "disabled");
-        status.put("3", "deleted");
-        status.put("4", "canceled");
+
+
     }
 
 
@@ -37,11 +34,6 @@ public class BillingService {
 
     }
 
-
-
-    public List getBillingStatus() {
-        return OthersUtils.getListFromMap(status);
-    }
 
     public BillingEntity getBillingEntityBykey(String key) {
         return entities.get(key);

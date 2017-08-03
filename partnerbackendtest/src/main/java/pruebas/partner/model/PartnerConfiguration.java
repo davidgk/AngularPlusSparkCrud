@@ -37,9 +37,10 @@ public class PartnerConfiguration {
     private Boolean ignoreSixMonthDisableDeleteRule;
     private Integer contractEntityKey;
     private Integer partnerStatusKey;
-    private Integer partnerTypeKey;
     private Integer billingPartnerId;*/
+    private Long partnerTypeKey;
     private Boolean isClientLevelContractEntity;
+    private Long partnerStatusKey;
 
     public static PartnerConfiguration create(Long partnerConfigurationKey, Long partnerKey, String
         version, String notificationUrl, Boolean requireAcquirerReferenceNumber
@@ -50,7 +51,7 @@ public class PartnerConfiguration {
         String supportPhone, String supportEmail, Boolean autoCloseCases, String cascadeDisableDescriptors,
         String clientAutoClosed, Boolean enableInvoiceCreditNotifications,
         Boolean ignoreSixMonthDisableDeleteRule, Integer contractEntityKey,
-        Integer partnerStatusKey, Integer partnerTypeKey, Integer billingPartnerId,
+        Long partnerStatusKey, Integer partnerTypeKey, Integer billingPartnerId,
         Boolean isClientLevelContractEntity, Long fakeBillingEntityKey) {
         PartnerConfiguration partnerConfiguration = new PartnerConfiguration();
         partnerConfiguration.partnerConfigurationKey= partnerConfigurationKey;
@@ -82,18 +83,25 @@ public class PartnerConfiguration {
         partnerConfiguration.enableInvoiceCreditNotifications=enableInvoiceCreditNotifications;
         partnerConfiguration.ignoreSixMonthDisableDeleteRule=ignoreSixMonthDisableDeleteRule;
         partnerConfiguration.contractEntityKey= contractEntityKey;
-        partnerConfiguration.partnerStatusKey= partnerStatusKey;
         partnerConfiguration.partnerTypeKey= partnerTypeKey;
         partnerConfiguration.billingPartnerId= billingPartnerId;*/
         partnerConfiguration.isClientLevelContractEntity= isClientLevelContractEntity;
+        partnerConfiguration.partnerStatusKey= partnerStatusKey;
         partnerConfiguration.fakeBillingEntityKey= fakeBillingEntityKey;
         return partnerConfiguration;
     }
 
-    public static PartnerConfiguration createSimple(Long partnerConfigurationKey, Long partnerKey,  Boolean isClientLevelContractEntity) {
+    public static PartnerConfiguration createSimple(
+        Long partnerConfigurationKey,
+        Long partnerKey,
+        Long partnerTypeKey,
+        Long partnerStatusKey,
+        Boolean isClientLevelContractEntity) {
         PartnerConfiguration partnerConfiguration = new PartnerConfiguration();
         partnerConfiguration.partnerConfigurationKey= partnerConfigurationKey;
         partnerConfiguration.partnerKey= partnerKey;
+        partnerConfiguration.partnerTypeKey= partnerTypeKey;
+        partnerConfiguration.partnerStatusKey= partnerStatusKey;
         partnerConfiguration.isClientLevelContractEntity= isClientLevelContractEntity;
         partnerConfiguration.fakeBillingEntityKey= 2L;
         return partnerConfiguration;

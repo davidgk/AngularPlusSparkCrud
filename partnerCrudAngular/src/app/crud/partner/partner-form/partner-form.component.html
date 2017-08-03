@@ -52,29 +52,29 @@
             <div class="some_explanation_form_field">{{billingEntityData.someExplanation}}</div>
           </div>
 
-         <!-- <div class="components_situation">
+          <div class="components_situation">
             <div class="field_form_title">
               {{partnerTypeData.title}} <span ng-show="!partnerTypeData.isRequired" class="is_required_form" >*</span>
             </div>
             <select required name="partnerType"
-              [(ngModel)]="simpleValue">
+              [(ngModel)]="billingEntityData.entitySelected.partnerTypeKey">
               <option disabled hidden [value]="partnerTypeData.selectUndefinedOptionValue">&#45;&#45; select &#45;&#45;</option>
-              <option *ngFor="let obj of partnerTypeData.entitiesForCombo" [value]="obj.value" >{{obj.name}}</option>
+              <option *ngFor="let obj of partnerTypeData.entitiesForCombo" value= {{obj.key}} >{{obj.name}}</option>
             </select>
             <div class="some_explanation_form_field">{{partnerTypeData.someExplanation}}</div>
-          </div>-->
+          </div>
 
-          <!--<div class="components_situation">
+          <div class="components_situation">
             <div class="field_form_title">
-              {{billingStatusData.title}} <span ng-show="!billingStatusData.isRequired" class="is_required_form" >*</span>
+              {{partnerStatusData.title}} <span ng-show="!partnerStatusData.isRequired" class="is_required_form" >*</span>
             </div>
-            <select required name="billingStatus"
-              [(ngModel)]="simpleValue">
-              <option disabled hidden [value]="billingStatusData.selectUndefinedOptionValue">&#45;&#45; select &#45;&#45;</option>
-              <option *ngFor="let obj of billingStatusData.entitiesForCombo" [value]="obj" >{{obj}}</option>
+            <select required name="partnerStatus"
+              [(ngModel)]="partnerStatusData.entitySelected.partnerStatusKey">
+              <option disabled hidden [value]="partnerStatusData.selectUndefinedOptionValue">&#45;&#45; select &#45;&#45;</option>
+              <option *ngFor="let obj of partnerStatusData.entitiesForCombo" value= {{obj.key}} >{{obj.name}}</option>
             </select>
-            <div class="some_explanation_form_field">{{billingStatusData.someExplanation}}</div>
-          </div>-->
+            <div class="some_explanation_form_field">{{partnerStatusData.someExplanation}}</div>
+          </div>
 
          <!-- <div class="components_situation">
             <div class="field_form_title">

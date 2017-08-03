@@ -36,12 +36,14 @@ public class ServicesMain {
         //Billing
         get("/billing/entity", (req, res) -> getBillingEntities(), json());
         get("/billing/entity/:key", (req, res) -> getBillingEntityBykey(req.params("key")), json());
-        get("/billing/status", (req, res) -> getBillingStatus(), json());
         // Partner
-        get("/partners", (req, res) -> partnerService.getAllPartners(), json());
-        get("/partners/types", (req, res) -> partnerService.getPartnersTypes(), json());
-        get("/partners/configuration/:key", (req, res) -> partnerService.getPartnerConfigurationById(req.params("key")), json());
-        get("/partners/:id", (req, res) -> getPartnerById(req,res), json());
+        get("/partner", (req, res) -> partnerService.getAllPartners(), json());
+        get("/partner/status", (req, res) -> getAllPartnerStatus(), json());
+        get("/partner/status/:key", (req, res) -> partnerService.getPartnerStatusByKey(req.params("key")), json());
+        get("/partner/type", (req, res) -> partnerService.getPartnersTypes(), json());
+        get("/partner/type/:key", (req, res) -> partnerService.getPartnerTypeByKey(req.params("key")), json());
+        get("/partner/configuration/:key", (req, res) -> partnerService.getPartnerConfigurationById(req.params("key")), json());
+        get("/partner/:id", (req, res) -> getPartnerById(req,res), json());
         //Integration
         get("/integrations/status", (req, res) -> integrationService.getAllintegrationStatus(), json());
     }
@@ -57,7 +59,7 @@ public class ServicesMain {
     static List getBillingEntities() {
         return billlingService.getBillingEntities();
     }
-    static List getBillingStatus() {        return billlingService.getBillingStatus();
+    static List getAllPartnerStatus() {        return partnerService.getAllPartnerStatus();
     }
 
     static List getAllContactEntities() {
