@@ -2,12 +2,14 @@ import {BillingService} from "../../../../../services/billing/billing.service";
 import {PartnerFormComponent} from "../../partner-form.component";
 import {CommonPartnerFormComponent} from "../common-partner-form-component";
 import {ContractEntitiesService} from "../../../../../services/contract-entity/contract-entities.service";
+import {ContractEntity} from "../../../../../model/contract_entity";
 
 export class ContractEntityData extends CommonPartnerFormComponent{
 
-  constructor(public contractEntityService: ContractEntitiesService,public partnerForm:PartnerFormComponent ){
+  constructor(public contractEntityService: ContractEntitiesService,public formComponent:PartnerFormComponent ){
     super();
-    this.loadEntityData();
+    this.loadInformationFromCombo();
+    this.entitySelected = ContractEntity.initDummy();
   }
 
   configEntityField() {
@@ -17,23 +19,26 @@ export class ContractEntityData extends CommonPartnerFormComponent{
   }
 
   loadEntityData() {
-    /*this.entitySelected = this.partnerForm.partnerGlobal.partnerConfiguration.billingEntity;*/
+    this.entitySelected = this.formComponent.partnerGlobal.partnerConfiguration.billingEntity;
+  }
+
+  loadInformationFromCombo() {
     this.contractEntityService.getContractors()
       .subscribe(data => this.entitiesForCombo = data);
   }
 
-
-  completeBillingEntityCombo() {
-     /* let billingEntityKey = formComponent.partnerGlobal.getBillingEntityKey();
-      this.billingService.getBillingEntityByKey(billingEntityKey).subscribe(
-        data => {
-          formComponent.partnerGlobal.partnerConfiguration.billingEntity = data;
-          this.entitySelected = data;
-        }, response => {
-          if (response.status == 404) {
-            formComponent.router.navigate(['NotFound']);
-          }
-        });*/
+  completeEntityCombo(){
+    let key = this.formComponent.partnerGlobal.getBillingEntityKey();
+    let self:ContractEntityData = this;
+    this.contractEntityService.getContractEntityByPartnerId(key).subscribe(
+      data => {
+        self.formComponent.partnerGlobal.client.contractEntity = data;
+        self.entitySelected = data;
+      }, response => {
+        if (response.status == 404) {
+          self.formComponent.router.navigate(['NotFound']);
+        }
+      });
   }
 
 }

@@ -1,10 +1,10 @@
-import {BillingEntitity} from "./billing_entity";
+import {BillingEntity} from "./billing_entity";
 import {CommonDomainEntity} from "./common-domain-entity";
 export class PartnerConfiguration implements CommonDomainEntity{
   public partnerConfigurationKey:number;
   public partnerKey:number;
   public fakeBillingEntityKey:number;
-  public billingEntity:BillingEntitity;
+  public billingEntity:BillingEntity;
   /*version:number;
   notificationUrl:string;
   requireAcquirerReferenceNumber:number;
@@ -42,7 +42,7 @@ export class PartnerConfiguration implements CommonDomainEntity{
 
   static initDummy() {
     let partnerConf: PartnerConfiguration = new PartnerConfiguration();
-    let dummy:BillingEntitity = new BillingEntitity();
+    let dummy:BillingEntity = BillingEntity.initDummy();
     dummy.key =0;
     dummy.fakeBillingEntityName="----Select-----"
     partnerConf.billingEntity = dummy;

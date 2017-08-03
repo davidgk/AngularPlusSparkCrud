@@ -6,7 +6,7 @@ import {PartnerConfiguration} from "../../../model/partner_configuration";
 import {BillingEntityData} from "./components/legal-information/billing-entity-data";
 
 import {BillingService} from "../../../services/billing/billing.service";
-import {PartnerGlobal} from "../../../model/partnerGlobal";
+import {PartnerGlobal} from "../../../model/partner-global";
 import {PartnerTypeData} from "./components/legal-information/partner-type-data";
 import {ClientLevelData} from "./components/legal-information/client-level-data";
 import {BillingStatusData} from "./components/legal-information/billing-status-data";
@@ -45,7 +45,6 @@ export class PartnerFormComponent implements OnInit {
     private integrationService: IntegrationService,
     private billingService: BillingService, ) {
       this.initDataComponents();
-      this.partnerGlobal = PartnerGlobal.buildMe();
       this.partnerForm = formBuilder.group({
         billingEntity: ['', [Validators.required]]
         //, billingEntity: ['', [Validators.required]]
@@ -54,12 +53,13 @@ export class PartnerFormComponent implements OnInit {
     }
 
   private initDataComponents() {
+    this.partnerGlobal = PartnerGlobal.buildMe();
     this.clientLevelData = new ClientLevelData( this);
-    this.billingEntityData = new BillingEntityData(this.billingService, this);
-    this.billingStatusData = new BillingStatusData(this.billingService, this);
     this.contractEntityData= new ContractEntityData(this.contractEntitiesService,  this);
-    this.integrationTypeData= new IntegrationTypeData(this.integrationService,  this);
-    this.partnerTypeData = new PartnerTypeData(this.partnerService, this);
+    this.billingEntityData = new BillingEntityData(this.billingService, this);
+    /*this.partnerTypeData = new PartnerTypeData(this.partnerService, this);
+    this.billingStatusData = new BillingStatusData(this.billingService, this);
+    this.integrationTypeData= new IntegrationTypeData(this.integrationService,  this);*/
   }
 
   ngOnInit() {
@@ -92,7 +92,7 @@ export class PartnerFormComponent implements OnInit {
     let partner= this.partnerGlobal.partner;
     this.partnerService.getPartnerConfiguration(partner.partner_key)
       .subscribe(data => {
-          this.loadPartnerConfiguration(data, this);
+          this.loadPartnerConfiguration(data);
         },response => {
         if (response.status == 404) {
           this.router.navigate(['NotFound']);
@@ -100,14 +100,15 @@ export class PartnerFormComponent implements OnInit {
       });
    }
 
-  loadPartnerConfiguration(partnerConfiguration: PartnerConfiguration, formComponent:PartnerFormComponent) {
-    formComponent.partnerGlobal.partnerConfiguration = partnerConfiguration;
+  loadPartnerConfiguration(partnerConfiguration: PartnerConfiguration) {
+    this.partnerGlobal.partnerConfiguration = partnerConfiguration;
     this.clientLevelData.loadEntityData()
-    this.billingEntityData.completeBillingEntityCombo();
-    this.billingStatusData.completeBillingEntityCombo();
-    this.contractEntityData.completeBillingEntityCombo();
-    this.integrationTypeData.completeBillingEntityCombo();
-    this.partnerTypeData.completeBillingEntityCombo();
+    this.contractEntityData.completeEntityCombo();
+    this.billingEntityData.completeEntityCombo();
+    /*
+    this.partnerTypeData.completeEntityCombo();
+    this.billingStatusData.completeEntityCombo();
+    this.integrationTypeData.completeEntityCombo();*/
   }
 
 
@@ -128,11 +129,13 @@ export class PartnerFormComponent implements OnInit {
   private configLegalInformation() {
     this.titleLegalInformation ="Legal Information"
     this.clientLevelData.configEntityField();
-    this.billingEntityData.configEntityField();
-    this.billingStatusData.configEntityField();
     this.contractEntityData.configEntityField();
+    this.billingEntityData.configEntityField();
+    /*
+    this.billingStatusData.configEntityField();
     this.integrationTypeData.configEntityField();
-    this.partnerTypeData.configEntityField();
+    this.partnerTypeData.configEntityField();*/
+    console.log("end Loading things");
 
   }
 

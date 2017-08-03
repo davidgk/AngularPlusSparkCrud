@@ -22,7 +22,7 @@ export class BillingStatusData extends CommonPartnerFormComponent{
   }
 
 
-  completeBillingEntityCombo() {
+  completeEntityCombo() {
       /*let billingEntityKey = formComponent.partnerGlobal.getBillingEntityKey();
       this.billingService.getBillingEntityByKey(billingEntityKey).subscribe(
         data => {

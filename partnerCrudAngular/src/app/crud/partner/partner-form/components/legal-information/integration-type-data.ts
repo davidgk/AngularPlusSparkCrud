@@ -22,7 +22,7 @@ export class IntegrationTypeData extends CommonPartnerFormComponent{
       .subscribe(data => this.entitiesForCombo = data);
   }
 
-  completeBillingEntityCombo() {
+  completeEntityCombo() {
       /*let billingEntityKey = formComponent.partnerGlobal.getBillingEntityKey();
       this.billingService.getBillingEntityByKey(billingEntityKey).subscribe(
         data => {

@@ -16,4 +16,8 @@ export class IntegrationService {
       .map(res => res.json());
   }
 
+  getIntegrationStatusByKey(key: number) {
+    return this.http.get(this.url +"/"+key)
+      .map(res => res.json());
+  }
 }

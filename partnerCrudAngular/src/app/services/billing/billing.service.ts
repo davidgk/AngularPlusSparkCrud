@@ -12,21 +12,29 @@ export class BillingService {
   constructor(private http: Http) { }
 
   getBillingEntities(){
-    return this.http.get(this.url+"/entities")
+    return this.http.get(this.getEntityUrl())
       .map(res => res.json());
   }
 
   getBillingStatus(){
-    return this.http.get(this.url+"/status")
+    return this.http.get(this.getStatusUrl())
       .map(res => res.json());
   }
 
-  getBillingEntityByKey (fakeBillingEntitykey: number) {
-    return this.http.get(this.getEntityUrl() +"/"+fakeBillingEntitykey)
+  getBillingEntityByKey (key: number) {
+    return this.http.get(this.getEntityUrl() +"/"+key)
+      .map(res => res.json());
+  }
+
+  getBillingStatusByKey(key: number) {
+    return this.http.get(this.getStatusUrl() +"/"+key)
       .map(res => res.json());
   }
 
   private getEntityUrl() {
     return this.url + "/entity"
+  }
+  private getStatusUrl() {
+    return this.url + "/status"
   }
 }

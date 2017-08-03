@@ -24,7 +24,7 @@ export class PartnerTypeData extends CommonPartnerFormComponent{
 
 
 
-  completeBillingEntityCombo() {
+  completeEntityCombo() {
      /* let billingEntityKey = formComponent.partnerGlobal.getBillingEntityKey();
       this.billingService.getBillingEntityByKey(billingEntityKey).subscribe(
         data => {
