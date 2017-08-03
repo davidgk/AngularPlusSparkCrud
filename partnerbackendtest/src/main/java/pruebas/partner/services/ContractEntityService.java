@@ -17,8 +17,8 @@ public class ContractEntityService {
 
     static{
         contractEntitities = new HashMap<>();
-        contractEntitities.put("1", ContractEntity.create("ContractEntity_01") );
-        contractEntitities.put("2", ContractEntity.create("ContractEntity_02") );
+        contractEntitities.put("1", ContractEntity.create("ContractEntity_01", 1L) );
+        contractEntitities.put("2", ContractEntity.create("ContractEntity_02", 2L) );
     }
     public static ContractEntityService create() {
         ContractEntityService contractEntityService = new ContractEntityService();
@@ -29,5 +29,9 @@ public class ContractEntityService {
         ArrayList result = new ArrayList(contractEntitities.values());
         return result;
 
+    }
+
+    public ContractEntity getById(String id) {
+        return contractEntitities.get(id);
     }
 }

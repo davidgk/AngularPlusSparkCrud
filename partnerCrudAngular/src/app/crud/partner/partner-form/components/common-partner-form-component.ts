@@ -1,16 +1,20 @@
-import {Partner} from "../../../../model/partner";
-import {Input} from "@angular/core";
-import {PartnerConfiguration} from "../../../../model/partner_configuration";
+import {CommonDomainEntity} from "../../../../model/common-domain-entity";
+
 export abstract class CommonPartnerFormComponent {
-  @Input()
-  public partner:Partner;
+  public selectUndefinedOptionValue:any;
 
-  @Input()
-  public partnerConfiguration:PartnerConfiguration;
+  public entitySelected:CommonDomainEntity;
+  public entitiesForCombo:CommonDomainEntity[] = [];
 
-  title:string;
+  abstract loadEntityData();
 
-  isRequired:boolean;
+  abstract configEntityField();
 
-  someExplanation:string;
+  public title:string;
+
+  public isRequired:boolean;
+
+  public someExplanation:string;
+
+
 }

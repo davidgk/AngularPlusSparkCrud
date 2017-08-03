@@ -12,12 +12,17 @@ export class BillingService {
   constructor(private http: Http) { }
 
   getBillingEntities(){
-    return this.http.get(this.url+"/entities")
+    return this.http.get(this.getEntityUrl())
       .map(res => res.json());
   }
 
-  getBillingStatus(){
-    return this.http.get(this.url+"/status")
+  getBillingEntityByKey (key: number) {
+    return this.http.get(this.getEntityUrl() +"/"+key)
       .map(res => res.json());
   }
+
+  private getEntityUrl() {
+    return this.url + "/entity"
+  }
+
 }

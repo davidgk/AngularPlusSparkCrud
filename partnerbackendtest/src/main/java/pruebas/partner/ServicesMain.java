@@ -1,5 +1,7 @@
 package pruebas.partner;
 
+import pruebas.partner.model.BillingEntity;
+import pruebas.partner.model.ContractEntity;
 import pruebas.partner.model.Partner;
 import pruebas.partner.services.BillingService;
 import pruebas.partner.services.ContractEntityService;
@@ -28,20 +30,36 @@ public class ServicesMain {
         port(getHerokuAssignedPort());
         enableCORS("*", "*", "*");
         initServices();
-        get("/contractors", (req, res) -> getAllContactEntities(), json());
-        get("/billing/entities", (req, res) -> getBillingEntities(), json());
-        get("/billing/status", (req, res) -> getBillingStatus(), json());
-        get("/partners", (req, res) -> partnerService.getAllPartners(), json());
-        get("/partners/types", (req, res) -> partnerService.getPartnersTypes(), json());
-        get("/partners/configuration/:key", (req, res) -> partnerService.getPartnerConfigurationById(req.params("key")), json());
+        // contractor
+        get("/contractor", (req, res) -> getAllContactEntities(), json());
+        get("/contractor/partner/:key", (req, res) -> getContractByPartnerId(req.params("id")), json());
+        //Billing
+        get("/billing/entity", (req, res) -> getBillingEntities(), json());
+        get("/billing/entity/:key", (req, res) -> getBillingEntityBykey(req.params("key")), json());
+        // Partner
+        get("/partner", (req, res) -> partnerService.getAllPartners(), json());
+        get("/partner/status", (req, res) -> getAllPartnerStatus(), json());
+        get("/partner/status/:key", (req, res) -> partnerService.getPartnerStatusByKey(req.params("key")), json());
+        get("/partner/type", (req, res) -> partnerService.getPartnersTypes(), json());
+        get("/partner/type/:key", (req, res) -> partnerService.getPartnerTypeByKey(req.params("key")), json());
+        get("/partner/configuration/:key", (req, res) -> partnerService.getPartnerConfigurationById(req.params("key")), json());
+        get("/partner/:id", (req, res) -> getPartnerById(req,res), json());
+        //Integration
         get("/integrations/status", (req, res) -> integrationService.getAllintegrationStatus(), json());
-        get("/partners/:id", (req, res) -> getPartnerById(req,res), json());
+    }
+
+    private static ContractEntity getContractByPartnerId(String id) {
+        return  contractEntitiesService.getById(id);
+    }
+
+    private static BillingEntity getBillingEntityBykey(String key) {
+        return billlingService.getBillingEntityBykey(key);
     }
 
     static List getBillingEntities() {
         return billlingService.getBillingEntities();
     }
-    static List getBillingStatus() {        return billlingService.getBillingStatus();
+    static List getAllPartnerStatus() {        return partnerService.getAllPartnerStatus();
     }
 
     static List getAllContactEntities() {

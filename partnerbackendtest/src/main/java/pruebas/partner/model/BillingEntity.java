@@ -4,11 +4,13 @@ package pruebas.partner.model;
  * @author david.kotlirevsky
  */
 public class BillingEntity {
-    private String name;
+    private Long key;
+    private String fakeBillingEntityName;
 
-    public static BillingEntity create(String name) {
+    public static BillingEntity create(String name, Long key) {
         BillingEntity billingEntity = new BillingEntity();
-        billingEntity.name = name;
+        billingEntity.fakeBillingEntityName = name;
+        billingEntity.key = key;
         return billingEntity;
     }
 

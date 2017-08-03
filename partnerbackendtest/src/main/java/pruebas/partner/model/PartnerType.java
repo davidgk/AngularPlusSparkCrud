@@ -7,12 +7,12 @@ import java.math.BigInteger;
  */
 public class PartnerType {
 
-    private BigInteger partnerTypeKey;
+    private Long partnerTypeKey;
     private String name;
 
     public static PartnerType create(String name, String key) {
         PartnerType partnerType = new PartnerType();
-        partnerType.partnerTypeKey=new BigInteger(key);
+        partnerType.partnerTypeKey=new Long(key);
         partnerType.name=name;
         return partnerType;
     }

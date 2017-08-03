@@ -1,7 +1,16 @@
-export class PartnerConfiguration{
-  partnerConfigurationKey:number;
-  partnerKey:number;
-  fakeBillingEntity:string;
+import {BillingEntity} from "./billing_entity";
+import {CommonDomainEntity} from "./common-domain-entity";
+import {PartnerType} from "./partner-type";
+import {PartnerStatus} from "./partner_status";
+export class PartnerConfiguration implements CommonDomainEntity{
+  public partnerConfigurationKey:number;
+  public partnerTypeKey:number;
+  public partnerStatusKey:number;
+  public partnerKey:number;
+  public fakeBillingEntityKey:number;
+  public billingEntity:BillingEntity;
+  public partnerType:PartnerType;
+  partnerStatus: PartnerStatus;
   /*version:number;
   notificationUrl:string;
   requireAcquirerReferenceNumber:number;
@@ -35,4 +44,18 @@ export class PartnerConfiguration{
   partnerTypeKey:number;
   billingPartnerId:string;*/
   isClientLevelContractEntity:boolean;
+
+
+
+  static initDummy() {
+    let partnerConf: PartnerConfiguration = new PartnerConfiguration();
+    partnerConf.partnerConfigurationKey =0;
+    partnerConf.fakeBillingEntityKey =2;
+    partnerConf.partnerTypeKey =2;
+    partnerConf.billingEntity = BillingEntity.initDummy();
+    partnerConf.partnerType= PartnerType.initDummy();
+    partnerConf.partnerStatus= PartnerStatus.initDummy();
+    return partnerConf;
+
+  }
 }

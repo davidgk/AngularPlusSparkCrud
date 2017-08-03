@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class PartnerService {
 
-  private url: string = "http://localhost:8090/partners";
+  private url: string = "http://localhost:8090/partner";
 
 
   constructor(private http: Http) { }
@@ -27,7 +27,7 @@ export class PartnerService {
     return this.url + "/" + key;
   }
 
-  getPartner(id){
+  getPartner = (id) => {
     return this.http.get(this.getPartnerUrl(id))
       .map(res => res.json());
   }
@@ -42,14 +42,42 @@ export class PartnerService {
       .map(res => res.json());
   }
 
-  getPartnersTypes(){
-    return this.http.get(this.url+"/types")
+  getAllPartnerStatus() {
+    return this.http.get(this.getPartnerStatusUrl())
       .map(res => res.json());
   }
 
-  getPartnerConfiguration(key: number) {
-    return this.http.get(this.url+"/configuration/"+key)
+  getPartnerStatusByKey(key: number) {
+    return this.http.get(this.getPartnerStatusUrl() +"/"+key)
       .map(res => res.json());
+  }
+
+  private getPartnerStatusUrl() {
+    return this.url + "/status"
+  }
+
+  getPartnerConfiguration= (key:number) => {
+    return this.http.get(this.url+"/configuration/"+key)
+      .map(res => {
+        console.log(res);
+        return res.json()
+      });
+  }
+
+  getPartnersTypeBykey(key: number) {
+    return this.http.get(this.getPartnerTypeUrl()+"/"+key)
+      .map(res => {
+        console.log(res);
+        return res.json()
+      });
+  }
+  getPartnersTypes(){
+    return this.http.get(this.getPartnerTypeUrl())
+      .map(res => res.json());
+  }
+
+  private getPartnerTypeUrl() {
+    return this.url + "/type";
   }
 }
 

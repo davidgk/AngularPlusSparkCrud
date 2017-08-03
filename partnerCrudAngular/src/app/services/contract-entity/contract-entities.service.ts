@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ContractEntitiesService {
 
-  private url: string = "http://localhost:8090/contractors";
+  private url: string = "http://localhost:8090/contractor";
 
 
   constructor(private http: Http) { }
@@ -16,5 +16,11 @@ export class ContractEntitiesService {
     return this.http.get(this.url)
       .map(res => res.json());
   }
+
+  getContractEntityByPartnerId(key: number) {
+    return this.http.get(this.url +"/partner/"+key)
+      .map(res => res.json());
+  }
+
 
 }
